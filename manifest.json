@@ -1,0 +1,135 @@
+{
+  "name": "KIDOBO: Reading Made Fun",
+  "short_name": "KIDOBO",
+  "description": "An interactive educational platform for children to learn reading through fun stories and games",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#FF6B6B",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "books", "kids"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiNGRjZCNkIiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMiAxNWwtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOC4xN2wtOCA4eiIvPgo8L3N2Zz4KPC9zdmc+",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiNGRjZCNkIiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptLTIgMTVsLTUtNSAxLjQxLTEuNDFMMTAgMTQuMTdsNy41OS03LjU5TDE5IDguMTdsLTggOHoiLz4KPC9zdmc+Cjwvc3ZnPg==",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyODAiIGhlaWdodD0iNzIwIiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRkY2QjZCIi8+Cjx0ZXh0IHg9IjY0MCIgeT0iNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPktJRE9CTyBSZWFkaW5nPC90ZXh0Pgo8dGV4dCB4PSI2NDAiIHk9IjgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5NYWRlIEZ1bjwvdGV4dD4KPHJlY3QgeD0iNjQiIHk9IjEyMCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIxODAiIHJ4PSIxNiIgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRkY2QjZCIIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxOTIiIHk9IjE4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSIjMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TdG9yaWVzPC90ZXh0Pgo8cmVjdCB4PSIzNTIiIHk9IjEyMCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIxODAiIHJ4PSIxNiIgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRkY2QjZCIIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI0ODAiIHk9IjE4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSIjMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HYW1lczwvdGV4dD4KPHJlY3QgeD0iNjQwIiB5PSIxMjAiIHdpZHRoPSIyNTYiIGhlaWdodD0iMTgwIiByeD0iMTYiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iI0ZGNkI2QiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9Ijc2OCIgeT0iMTgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiMwMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlByb2ZpbGU8L3RleHQ+CjxyZWN0IHg9IjkyOCIgeT0iMTIwIiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjE4MCIgcng9IjE2IiBmaWxsPSIjRkZGRkZGIiBzdHJva2U9IiNGRjZCNkIiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxMDU2IiB5PSIxODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U2V0dGluZ3M8L3RleHQ+Cjwvc3ZnPg==",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "KIDOBO Home Screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Reading",
+      "short_name": "Read",
+      "description": "Start reading a new story",
+      "url": "/?page=library",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4LjE3bC04IDh6Ii8+Cjwvc3ZnPg==",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Play Games",
+      "short_name": "Games",
+      "description": "Play educational games",
+      "url": "/?page=games",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4LjE3bC04IDh6Ii8+Cjwvc3ZnPg==",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "scope_extensions": [],
+  "capture_links": "existing-client-navigate",
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/plain": [".txt"],
+        "application/pdf": [".pdf"]
+      }
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+kidobo",
+      "url": "/?story=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "permissions": [
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "/sw.js",
+    "type": "module"
+  },
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "window-controls-overlay"
+  ],
+  "id": "kidobo-reading-app",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#FF6B6B",
+  "background_color": "#667eea",
+  "description": "An interactive educational platform for children to learn reading through fun stories and games",
+  "dir": "ltr",
+  "lang": "en",
+  "name": "KIDOBO: Reading Made Fun",
+  "orientation": "portrait-primary",
+  "short_name": "KIDOBO",
+  "categories": [
+    "education",
+    "books",
+    "kids"
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzc1IiBoZWlnaHQ9IjgxMiIgdmlld0JveD0iMCAwIDM3NSA4MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzNzUiIGhlaWdodD0iODEyIiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIzNzUiIGhlaWdodD0iNjAiIGZpbGw9IiNGRjZCNkIiLz4KPHN2ZyB4PSIxODcuNSIgeT0iMzAiIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMiAxNWwtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOC4xN2wtOCA4eiIvPgo8L3N2Zz4KPHJlY3QgeD0iMjAiIHk9IjgwIiB3aWR0aD0iMzM1IiBoZWlnaHQ9IjIwMCIgcng9IjEyIiBmaWxsPSIjRkZGRkZGIiBzdHJva2U9IiNGRjZCNkIiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxODcuNSIgeT0iMTgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMwMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldlbGNvbWUgdG8gS0lET0JPPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iMjIwIiB3aWR0aD0iMzM1IiBoZWlnaHQ9IjE2MCIgcng9IjEyIiBmaWxsPSIjRkZGRkZGIiBzdHJva2U9IiNGRjZCNkIiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxODcuNSIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMwMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlN0b3J5IExpYnJhcnk8L3RleHQ+CjxyZWN0IHg9IjIwIiB5PSI0MDAiIHdpZHRoPSIzMzUiIGhlaWdodD0iMTYwIiByeD0iMTIiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iI0ZGNkI2QiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjE4Ny41IiB5PSI0ODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RWR1Y2F0aW9uYWwgR2FtZXM8L3RleHQ+CjxyZWN0IHg9IjIwIiB5PSI1ODAiIHdpZHRoPSIzMzUiIGhlaWdodD0iMTYwIiByeD0iMTIiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iI0ZGNkI2QiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjE4Ny41IiB5PSI2NjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvZ3Jlc3MgVHJhY2tpbmc8L3RleHQ+CjxyZWN0IHg9IjIwIiB5PSI3NjAiIHdpZHRoPSIzMzUiIGhlaWdodD0iMzIiIHJ4PSIxNiIgZmlsbD0iI0ZGNkI2QiIvPgo8dGV4dCB4PSIxODcuNSIgeT0iNzgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TdGFydCBSZWFkaW5nPC90ZXh0Pgo8L3N2Zz4=",
+      "sizes": "375x812",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "KIDOBO Mobile View"
+    }
+  ]
+} 

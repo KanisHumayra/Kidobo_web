@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDOBO - Child Interface</title>
+    <link rel="stylesheet" href="child.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="child-icon">👶</div>
+                <div class="loading-text">Loading KIDOBO...</div>
+                <div class="loading-subtitle">Getting ready for fun reading!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="child-navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>📚 KIDOBO</h1>
+                <span>Reading Made Fun</span>
+            </div>
+            <div class="nav-menu">
+                <button id="homeBtn" class="nav-btn active">🏠 Home</button>
+                <button id="libraryBtn" class="nav-btn">📖 Library</button>
+                <button id="gamesBtn" class="nav-btn">🎮 Games</button>
+                <button id="profileBtn" class="nav-btn">👤 Profile</button>
+            </div>
+            <div class="nav-actions">
+                <div class="user-info">
+                    <span id="childName">Reader</span>
+                    <div class="stars-display">
+                        <span id="totalStars">0</span> ⭐
+                    </div>
+                </div>
+                <button id="backToMainBtn" class="btn-secondary">🏠 Main</button>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="homePage" class="page active">
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h2>Welcome back, <span id="welcomeName">Reader</span>! 🎉</h2>
+                    <p>Ready for another amazing reading adventure?</p>
+                </div>
+                <div class="welcome-avatar">
+                    <div class="child-avatar large" id="welcomeAvatar">🐱</div>
+                </div>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📖</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="booksRead">0</div>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalStarsHome">0</div>
+                        <div class="stat-label">Stars Earned</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="readingTime">0</div>
+                        <div class="stat-label">Minutes Read</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="achievementsCount">0</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-grid">
+                <div class="home-card">
+                    <h3>📖 Continue Reading</h3>
+                    <div class="continue-section" id="continueSection">
+                        <div class="continue-story">
+                            <h4>No story in progress</h4>
+                            <p>Start a new adventure!</p>
+                            <button class="btn-primary" onclick="childInterface.showPage('libraryPage')">Find a Story</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-card">
+                    <h3>🎮 Quick Games</h3>
+                    <div class="quick-games">
+                        <button class="game-btn" data-game="word-match">
+                            <div class="game-icon">🔤</div>
+                            <span>Word Match</span>
+                        </button>
+                        <button class="game-btn" data-game="vocabulary-quiz">
+                            <div class="game-icon">❓</div>
+                            <span>Quiz</span>
+                        </button>
+                        <button class="game-btn" data-game="story-completion">
+                            <div class="game-icon">📝</div>
+                            <span>Complete</span>
+                        </button>
+                        <button class="game-btn" data-game="reading-challenge">
+                            <div class="game-icon">🚀</div>
+                            <span>Challenge</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="home-card">
+                    <h3>🏆 Recent Achievements</h3>
+                    <div class="achievements-list" id="recentAchievements">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-name">First Reader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-card">
+                    <h3>📚 Popular Stories</h3>
+                    <div class="stories-list" id="popularStories">
+                        <div class="story-item">
+                            <div class="story-info">
+                                <h4>The Brave Little Mouse</h4>
+                                <p>Ages 4-6 • Animals</p>
+                            </div>
+                            <div class="story-category">Adventure</div>
+                        </div>
+                        <div class="story-item">
+                            <div class="story-info">
+                                <h4>The Magic Garden</h4>
+                                <p>Ages 7-8 • Fantasy</p>
+                            </div>
+                            <div class="story-category">Magic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Page -->
+        <section id="libraryPage" class="page">
+            <div class="library-header">
+                <h2>📚 Story Library</h2>
+                <p>Choose from our collection of amazing stories!</p>
+                <div class="library-filters">
+                    <select id="ageFilter" class="filter-select">
+                        <option value="all">All Ages</option>
+                        <option value="4-6">Ages 4-6</option>
+                        <option value="7-8">Ages 7-8</option>
+                        <option value="9-10">Ages 9-10</option>
+                    </select>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="animals">Animals</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="science">Science</option>
+                    </select>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search stories...">
+                </div>
+            </div>
+
+            <div id="storiesGrid" class="stories-grid">
+                <!-- Stories will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Games Page -->
+        <section id="gamesPage" class="page">
+            <div class="games-header">
+                <h2>🎮 Learning Games</h2>
+                <p>Have fun while learning new words and concepts!</p>
+            </div>
+
+            <div class="games-grid">
+                <div class="game-card" data-game="word-match">
+                    <div class="game-icon">🔤</div>
+                    <h3>Word Match</h3>
+                    <p>Match words with their meanings</p>
+                    <div class="game-stats">High Score: <span id="wordMatchScore">0</span></div>
+                    <button class="play-btn">Play Now</button>
+                </div>
+                <div class="game-card" data-game="vocabulary-quiz">
+                    <div class="game-icon">❓</div>
+                    <h3>Vocabulary Quiz</h3>
+                    <p>Test your word knowledge</p>
+                    <div class="game-stats">High Score: <span id="quizScore">0</span></div>
+                    <button class="play-btn">Play Now</button>
+                </div>
+                <div class="game-card" data-game="story-completion">
+                    <div class="game-icon">📝</div>
+                    <h3>Story Completion</h3>
+                    <p>Complete the missing words</p>
+                    <div class="game-stats">High Score: <span id="completionScore">0</span></div>
+                    <button class="play-btn">Play Now</button>
+                </div>
+                <div class="game-card" data-game="reading-challenge">
+                    <div class="game-icon">🚀</div>
+                    <h3>Reading Challenge</h3>
+                    <p>Speed reading with comprehension</p>
+                    <div class="game-stats">High Score: <span id="challengeScore">0</span></div>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <div class="games-leaderboard">
+                <h3>🏆 Game Leaderboard</h3>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <div class="leaderboard-item">
+                        <span class="rank">1</span>
+                        <span class="player-name">You</span>
+                        <span class="score">100 points</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profilePage" class="page">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="child-avatar large" id="profileAvatar">🐱</div>
+                    <button id="changeAvatarBtn" class="btn-secondary">Change Avatar</button>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileName">Reader</h2>
+                    <p id="profileAge">Age: 6 years old</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Reading Level</div>
+                            <div class="stat-value">Beginner</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Member Since</div>
+                            <div class="stat-value">Today</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <h3>📊 Reading Stats</h3>
+                    <div class="stats-list">
+                        <div class="stat-row">
+                            <span>Books Read</span>
+                            <span id="profileBooksRead">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Total Stars</span>
+                            <span id="profileTotalStars">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Reading Time</span>
+                            <span id="profileReadingTime">0 min</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Games Played</span>
+                            <span id="profileGamesPlayed">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h3>🏆 Achievements</h3>
+                    <div class="achievements-grid" id="profileAchievements">
+                        <div class="achievement-item earned">
+                            <div class="achievement-icon">📖</div>
+                            <div class="achievement-name">First Reader</div>
+                            <div class="achievement-description">Read your first story</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🐛</div>
+                            <div class="achievement-name">Bookworm</div>
+                            <div class="achievement-description">Read 5 stories</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">⭐</div>
+                            <div class="achievement-name">Star Collector</div>
+                            <div class="achievement-description">Earn 100 stars</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">⏰</div>
+                            <div class="achievement-name">Time Reader</div>
+                            <div class="achievement-description">Read for 60 minutes</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🎮</div>
+                            <div class="achievement-name">Game Master</div>
+                            <div class="achievement-description">Play 3 different games</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Perfect Score</div>
+                            <div class="achievement-description">Get 100% on a quiz</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h3>❤️ Favorite Stories</h3>
+                    <div class="favorites-list" id="favoritesList">
+                        <div class="favorite-item">
+                            <h4>The Brave Little Mouse</h4>
+                            <p>Read 3 times • Last read: Today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h3>🎯 Reading Goals</h3>
+                    <div class="goals-list" id="goalsList">
+                        <div class="goal-item">
+                            <h4>Read 10 Stories</h4>
+                            <p>Progress: 1/10 stories</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 10%"></div>
+                                </div>
+                                <span>10% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Story Reader Modal -->
+    <div id="storyReaderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="storyReaderTitle">Story Title</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="story-controls">
+                    <button id="prevPageBtn" class="control-btn">← Previous</button>
+                    <div class="page-indicator">
+                        <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                    </div>
+                    <button id="nextPageBtn" class="control-btn">Next →</button>
+                    <button id="playNarrationBtn" class="control-btn">🔊</button>
+                </div>
+                <div class="story-content">
+                    <div id="storyText" class="story-text">
+                        Story content will appear here...
+                    </div>
+                </div>
+                <div class="story-actions">
+                    <button id="completeStoryBtn" class="action-btn">
+                        <span class="action-icon">✅</span>
+                        Complete Story
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="gameTitle">Game Title</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="gameContainer" class="game-container">
+                    <!-- Game content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avatar Selection Modal -->
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Your Avatar</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-grid">
+                    <div class="avatar-option" data-avatar="🐱">🐱</div>
+                    <div class="avatar-option" data-avatar="🐶">🐶</div>
+                    <div class="avatar-option" data-avatar="🐰">🐰</div>
+                    <div class="avatar-option" data-avatar="🐸">🐸</div>
+                    <div class="avatar-option" data-avatar="🐼">🐼</div>
+                    <div class="avatar-option" data-avatar="🐨">🐨</div>
+                    <div class="avatar-option" data-avatar="🦊">🦊</div>
+                    <div class="avatar-option" data-avatar="🐯">🐯</div>
+                    <div class="avatar-option" data-avatar="🦁">🦁</div>
+                    <div class="avatar-option" data-avatar="🐮">🐮</div>
+                    <div class="avatar-option" data-avatar="🐷">🐷</div>
+                    <div class="avatar-option" data-avatar="🐸">🐸</div>
+                </div>
+                <div class="modal-actions">
+                    <button id="saveAvatarBtn" class="btn-primary">Save Avatar</button>
+                    <button id="cancelAvatarBtn" class="btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="celebrationModal" class="modal celebration-modal">
+        <div class="modal-content">
+            <div class="celebration-animation">
+                <div class="celebration-icon">🎉</div>
+                <h3 id="celebrationTitle">Congratulations!</h3>
+                <div class="celebration-stars">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <p id="celebrationMessage">You've earned 10 stars!</p>
+                <button id="closeCelebrationBtn" class="btn-primary">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="child.js"></script>
+</body>
+</html> 

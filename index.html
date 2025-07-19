@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDOBO: Reading Made Fun</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="book-icon">📚</div>
+                <div class="loading-text">Loading KIDOBO...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>📚 KIDOBO</h1>
+                <span>Reading Made Fun</span>
+            </div>
+            <div class="nav-menu">
+                <button id="homeBtn" class="nav-btn active">🏠 Home</button>
+                <button id="libraryBtn" class="nav-btn">📖 Library</button>
+                <button id="gamesBtn" class="nav-btn">🎮 Games</button>
+                <button id="profileBtn" class="nav-btn">👤 Profile</button>
+            </div>
+            <div class="nav-actions">
+                <button id="loginBtn" class="btn-primary">Login</button>
+                <button id="muteBtn" class="btn-icon">🔊</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="mainContent" class="main-content">
+        <!-- Home Page -->
+        <section id="homePage" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Welcome to KIDOBO!</h2>
+                    <p class="hero-subtitle">Where reading becomes an adventure! 🚀</p>
+                    <div class="hero-buttons">
+                        <button id="startReadingBtn" class="btn-large">Start Reading</button>
+                        <button id="exploreBtn" class="btn-large secondary">Explore Stories</button>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="floating-elements">
+                        <div class="floating-book">📖</div>
+                        <div class="floating-star">⭐</div>
+                        <div class="floating-heart">❤️</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h3>What's New?</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Interactive Stories</h4>
+                        <p>Click, listen, and learn with our animated storybooks!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h4>Earn Rewards</h4>
+                        <p>Collect stars and badges as you read more stories!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h4>Fun Games</h4>
+                        <p>Test your knowledge with quizzes and word games!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="role-interfaces-section">
+                <h3>🎭 Role-Based Interfaces</h3>
+                <p>KIDOBO now offers specialized interfaces for different users:</p>
+                <div class="role-cards">
+                    <div class="role-card">
+                        <div class="role-icon">👶</div>
+                        <h4>Child Interface</h4>
+                        <p>Colorful, engaging interface designed specifically for children aged 4-10</p>
+                        <button class="btn-secondary" onclick="window.location.href='child.html'">Try Child Interface</button>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon">👨‍👩‍👧‍👦</div>
+                        <h4>Parent Interface</h4>
+                        <p>Family dashboard for tracking children's progress and setting goals</p>
+                        <button class="btn-secondary" onclick="window.location.href='parent.html'">Try Parent Interface</button>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon">🔧</div>
+                        <h4>Admin Interface</h4>
+                        <p>Content management and analytics dashboard for administrators</p>
+                        <button class="btn-secondary" onclick="window.location.href='admin.html'">Try Admin Interface</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Page -->
+        <section id="libraryPage" class="page">
+            <div class="library-header">
+                <h2>📚 Story Library</h2>
+                <div class="filter-controls">
+                    <select id="ageFilter" class="filter-select">
+                        <option value="all">All Ages</option>
+                        <option value="4-6">Ages 4-6</option>
+                        <option value="7-8">Ages 7-8</option>
+                        <option value="9-10">Ages 9-10</option>
+                    </select>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="animals">Animals</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="science">Science</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="storiesGrid" class="stories-grid">
+                <!-- Stories will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Story Reader Page -->
+        <section id="storyReaderPage" class="page">
+            <div class="story-header">
+                <button id="backToLibraryBtn" class="btn-back">← Back to Library</button>
+                <div class="story-controls">
+                    <button id="playPauseBtn" class="btn-control">▶️</button>
+                    <button id="speedBtn" class="btn-control">1x</button>
+                    <button id="muteStoryBtn" class="btn-control">🔊</button>
+                </div>
+            </div>
+
+            <div class="story-content">
+                <div id="storyPages" class="story-pages">
+                    <!-- Story pages will be loaded here -->
+                </div>
+            </div>
+
+            <div class="story-navigation">
+                <button id="prevPageBtn" class="nav-btn">← Previous</button>
+                <div class="page-indicator">
+                    <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                </div>
+                <button id="nextPageBtn" class="nav-btn">Next →</button>
+                <button id="completeStoryBtn" class="btn-primary" style="display: none;">Complete Story</button>
+            </div>
+        </section>
+
+        <!-- Games Page -->
+        <section id="gamesPage" class="page">
+            <div class="games-header">
+                <h2>🎮 Learning Games</h2>
+                <p>Have fun while learning new words and concepts!</p>
+            </div>
+
+            <div class="games-grid">
+                <div class="game-card" data-game="word-match">
+                    <div class="game-icon">🔤</div>
+                    <h3>Word Match</h3>
+                    <p>Match words with their meanings</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+                <div class="game-card" data-game="vocabulary-quiz">
+                    <div class="game-icon">❓</div>
+                    <h3>Vocabulary Quiz</h3>
+                    <p>Test your word knowledge</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+                <div class="game-card" data-game="story-completion">
+                    <div class="game-icon">📝</div>
+                    <h3>Story Completion</h3>
+                    <p>Complete the missing words</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profilePage" class="page">
+            <div class="profile-header">
+                <h2>👤 My Profile</h2>
+            </div>
+
+            <div class="profile-content">
+                <div class="avatar-section">
+                    <div class="avatar-display">
+                        <div id="userAvatar" class="avatar">🐱</div>
+                    </div>
+                    <button id="changeAvatarBtn" class="btn-secondary">Change Avatar</button>
+                </div>
+
+                <div class="stats-section">
+                    <h3>My Reading Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="booksRead">0</div>
+                            <div class="stat-label">Books Read</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalStars">0</div>
+                            <div class="stat-label">Stars Earned</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="readingTime">0</div>
+                            <div class="stat-label">Minutes Read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <h3>🏆 Achievements</h3>
+                    <div id="achievementsList" class="achievements-grid">
+                        <!-- Achievements will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Parent-specific features -->
+                <div id="parentFeatures" class="parent-features" style="display: none;">
+                    <h3>📊 Parent Dashboard</h3>
+                    <div class="parent-controls">
+                        <button id="exportDataBtn" class="btn-secondary">Export Reading Data</button>
+                        <button id="setGoalsBtn" class="btn-secondary">Set Reading Goals</button>
+                        <button id="viewHistoryBtn" class="btn-secondary">View Reading History</button>
+                    </div>
+                </div>
+
+                <!-- Admin-specific features -->
+                <div id="adminFeatures" class="admin-features" style="display: none;">
+                    <h3>🔧 Admin Panel</h3>
+                    <div class="admin-controls">
+                        <button id="addStoryBtn" class="btn-secondary">Add New Story</button>
+                        <button id="manageUsersBtn" class="btn-secondary">Manage Users</button>
+                        <button id="viewAnalyticsBtn" class="btn-secondary">View Analytics</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome to KIDOBO!</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="login-tabs">
+                    <button class="tab-btn active" data-tab="child">Child</button>
+                    <button class="tab-btn" data-tab="parent">Parent</button>
+                    <button class="tab-btn" data-tab="admin">Admin</button>
+                </div>
+                
+                <div id="childLogin" class="tab-content active">
+                    <form id="childLoginForm">
+                        <div class="form-group">
+                            <label for="childName">Your Name:</label>
+                            <input type="text" id="childName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="childAge">Your Age:</label>
+                            <select id="childAge" required>
+                                <option value="">Select Age</option>
+                                <option value="4">4 years</option>
+                                <option value="5">5 years</option>
+                                <option value="6">6 years</option>
+                                <option value="7">7 years</option>
+                                <option value="8">8 years</option>
+                                <option value="9">9 years</option>
+                                <option value="10">10 years</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">Start Reading!</button>
+                    </form>
+                </div>
+
+                <div id="parentLogin" class="tab-content">
+                    <form id="parentLoginForm">
+                        <div class="form-group">
+                            <label for="parentEmail">Email:</label>
+                            <input type="email" id="parentEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentPassword">Password:</label>
+                            <input type="password" id="parentPassword" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                </div>
+
+                <div id="adminLogin" class="tab-content">
+                    <form id="adminLoginForm">
+                        <div class="form-group">
+                            <label for="adminUsername">Username:</label>
+                            <input type="text" id="adminUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Password:</label>
+                            <input type="password" id="adminPassword" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avatar Selection Modal -->
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Your Avatar</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-grid">
+                    <div class="avatar-option" data-avatar="🐱">🐱</div>
+                    <div class="avatar-option" data-avatar="🐶">🐶</div>
+                    <div class="avatar-option" data-avatar="🐰">🐰</div>
+                    <div class="avatar-option" data-avatar="🐸">🐸</div>
+                    <div class="avatar-option" data-avatar="🐼">🐼</div>
+                    <div class="avatar-option" data-avatar="🦊">🦊</div>
+                    <div class="avatar-option" data-avatar="🐻">🐻</div>
+                    <div class="avatar-option" data-avatar="🦁">🦁</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content game-modal">
+            <div class="modal-header">
+                <h3 id="gameTitle">Game</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="gameContainer" class="game-container">
+                    <!-- Game content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjIwLjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAAFbgBtbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1t//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjM1AAAAAAAAAAAAAAAAJAYAAAAAAAAABW4=" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html> 

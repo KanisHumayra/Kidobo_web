@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDOBO - Parent Dashboard</title>
+    <link rel="stylesheet" href="parent.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="parent-icon">👨‍👩‍👧‍👦</div>
+                <div class="loading-text">Loading Parent Dashboard...</div>
+                <div class="loading-subtitle">Getting your family's reading data ready!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="parent-navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>📚 KIDOBO</h1>
+                <span>Parent Dashboard</span>
+            </div>
+            <div class="nav-menu">
+                <button id="overviewBtn" class="nav-btn active">📊 Overview</button>
+                <button id="childrenBtn" class="nav-btn">👶 Children</button>
+                <button id="progressBtn" class="nav-btn">📈 Progress</button>
+                <button id="goalsBtn" class="nav-btn">🎯 Goals</button>
+                <button id="reportsBtn" class="nav-btn">📋 Reports</button>
+            </div>
+            <div class="nav-actions">
+                <span id="parentName">Parent</span>
+                <button id="backToMainBtn" class="btn-secondary">🏠 Main</button>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Overview Page -->
+        <section id="overviewPage" class="page active">
+            <div class="overview-header">
+                <h2>Family Reading Overview</h2>
+                <p>Welcome back! Here's how your family is doing with reading.</p>
+            </div>
+
+            <div class="family-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">👶</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalChildren">2</div>
+                        <div class="stat-label">Children</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📖</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalBooksRead">15</div>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalStars">245</div>
+                        <div class="stat-label">Stars Earned</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalReadingTime">180</div>
+                        <div class="stat-label">Minutes Read</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="children-overview">
+                <h3>Your Children</h3>
+                <div class="children-grid" id="childrenGrid">
+                    <!-- Children will be loaded here -->
+                </div>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>📊 Recent Activity</h3>
+                    <div class="activity-list" id="recentActivity">
+                        <div class="activity-item">
+                            <span class="activity-action">Emma completed "The Brave Little Mouse"</span>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-action">Liam earned 20 stars in Word Match</span>
+                            <span class="activity-time">4 hours ago</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-action">Emma started reading "The Magic Garden"</span>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <h3>🎯 Current Goals</h3>
+                    <div class="goals-list" id="currentGoals">
+                        <div class="goal-item">
+                            <h5>Read 20 Stories</h5>
+                            <p>Family goal for this month</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span>15/20 completed</span>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <h5>Earn 500 Stars</h5>
+                            <p>Combined stars goal</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 49%"></div>
+                                </div>
+                                <span>245/500 earned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <h3>📚 Popular Stories</h3>
+                    <div class="stories-list" id="popularStories">
+                        <div class="story-item">
+                            <div class="story-info">
+                                <h5>The Brave Little Mouse</h5>
+                                <p>Read 8 times by your children</p>
+                            </div>
+                            <div class="story-category">Adventure</div>
+                        </div>
+                        <div class="story-item">
+                            <div class="story-info">
+                                <h5>The Magic Garden</h5>
+                                <p>Read 5 times by your children</p>
+                            </div>
+                            <div class="story-category">Fantasy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <h3>⚡ Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" id="addChildBtn">
+                            <div class="action-icon">➕</div>
+                            <span>Add Child</span>
+                        </button>
+                        <button class="action-btn" id="setGoalBtn">
+                            <div class="action-icon">🎯</div>
+                            <span>Set Goal</span>
+                        </button>
+                        <button class="action-btn" id="exportDataBtn">
+                            <div class="action-icon">📊</div>
+                            <span>Export Data</span>
+                        </button>
+                        <button class="action-btn" id="viewReportsBtn">
+                            <div class="action-icon">📋</div>
+                            <span>View Reports</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Children Management Page -->
+        <section id="childrenPage" class="page">
+            <div class="children-header">
+                <h2>Children Management</h2>
+                <button id="addChildBtn2" class="btn-primary">Add New Child</button>
+            </div>
+
+            <div class="children-list" id="childrenList">
+                <!-- Children will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Progress Tracking Page -->
+        <section id="progressPage" class="page">
+            <div class="progress-header">
+                <h2>Reading Progress</h2>
+                <div class="progress-filters">
+                    <select id="childFilter" class="filter-select">
+                        <option value="all">All Children</option>
+                        <option value="emma">Emma</option>
+                        <option value="liam">Liam</option>
+                    </select>
+                    <select id="timeFilter" class="filter-select">
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <h3>📈 Reading Time</h3>
+                    <div class="chart-container">
+                        <p>Reading time chart will appear here</p>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <h3>📊 Books Completed</h3>
+                    <div class="chart-container">
+                        <p>Books completed chart will appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-details">
+                <div class="detail-card">
+                    <h4>📈 Reading Trends</h4>
+                    <div class="trends-list">
+                        <div class="trend-item">
+                            <span class="trend-label">Average reading time per day</span>
+                            <span class="trend-value positive">+15 minutes</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">Books completed this week</span>
+                            <span class="trend-value positive">+3 books</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">Stars earned this month</span>
+                            <span class="trend-value positive">+45 stars</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <h4>❤️ Favorite Stories</h4>
+                    <div class="favorites-list">
+                        <div class="trend-item">
+                            <span class="trend-label">The Brave Little Mouse</span>
+                            <span class="trend-value">8 reads</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">The Magic Garden</span>
+                            <span class="trend-value">5 reads</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">The Space Adventure</span>
+                            <span class="trend-value">3 reads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Page -->
+        <section id="goalsPage" class="page">
+            <div class="goals-header">
+                <h2>Reading Goals</h2>
+                <button id="createGoalBtn" class="btn-primary">Create New Goal</button>
+            </div>
+
+            <div class="goals-grid">
+                <div class="goals-card">
+                    <h3>🎯 Family Goals</h3>
+                    <div class="goals-list" id="familyGoals">
+                        <div class="goal-item">
+                            <h5>Read 20 Stories This Month</h5>
+                            <p>Progress: 15/20 stories completed</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span>75% Complete</span>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <h5>Earn 500 Stars Together</h5>
+                            <p>Progress: 245/500 stars earned</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 49%"></div>
+                                </div>
+                                <span>49% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="goals-card">
+                    <h3>👶 Individual Goals</h3>
+                    <div class="goals-list" id="individualGoals">
+                        <div class="goal-item">
+                            <h5>Emma: Read 10 Stories</h5>
+                            <p>Progress: 8/10 stories completed</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <span>80% Complete</span>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <h5>Liam: Earn 200 Stars</h5>
+                            <p>Progress: 150/200 stars earned</p>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span>75% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goals-summary">
+                <div class="summary-card">
+                    <h4>📊 Goals Summary</h4>
+                    <div class="summary-stats">
+                        <div class="summary-item">
+                            <span class="summary-label">Active Goals</span>
+                            <span class="summary-value">4</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Completed This Month</span>
+                            <span class="summary-value">2</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Average Completion Rate</span>
+                            <span class="summary-value">75%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <h4>🏆 Achievements</h4>
+                    <div class="summary-stats">
+                        <div class="summary-item">
+                            <span class="summary-label">Total Achievements</span>
+                            <span class="summary-value">12</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">This Month</span>
+                            <span class="summary-value">3</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Most Recent</span>
+                            <span class="summary-value">Bookworm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Page -->
+        <section id="reportsPage" class="page">
+            <div class="reports-header">
+                <h2>Reading Reports</h2>
+                <div class="report-actions">
+                    <button id="exportReportBtn" class="btn-primary">Export Report</button>
+                    <button id="printReportBtn" class="btn-secondary">Print Report</button>
+                </div>
+            </div>
+
+            <div class="reports-filters">
+                <select id="reportChildFilter" class="filter-select">
+                    <option value="all">All Children</option>
+                    <option value="emma">Emma</option>
+                    <option value="liam">Liam</option>
+                </select>
+                <select id="reportTypeFilter" class="filter-select">
+                    <option value="weekly">Weekly Report</option>
+                    <option value="monthly">Monthly Report</option>
+                    <option value="yearly">Yearly Report</option>
+                </select>
+                <input type="date" id="startDate" class="date-input" value="2024-01-01">
+                <input type="date" id="endDate" class="date-input" value="2024-12-31">
+                <button id="generateReportBtn" class="btn-primary">Generate Report</button>
+            </div>
+
+            <div class="report-content" id="reportContent">
+                <div class="report-section">
+                    <h4>📊 Reading Statistics</h4>
+                    <p>This report shows reading activity from January 1, 2024 to December 31, 2024.</p>
+                </div>
+
+                <div class="report-section">
+                    <h4>👶 Individual Performance</h4>
+                    <div class="performance-summary">
+                        <div class="child-performance">
+                            <h5>Emma (Age 7)</h5>
+                            <ul>
+                                <li>Books Read: 12</li>
+                                <li>Reading Time: 120 minutes</li>
+                                <li>Stars Earned: 180</li>
+                                <li>Favorite Category: Fantasy</li>
+                            </ul>
+                        </div>
+                        <div class="child-performance">
+                            <h5>Liam (Age 5)</h5>
+                            <ul>
+                                <li>Books Read: 8</li>
+                                <li>Reading Time: 80 minutes</li>
+                                <li>Stars Earned: 120</li>
+                                <li>Favorite Category: Animals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h4>📈 Progress Trends</h4>
+                    <p>Both children show consistent improvement in reading skills and engagement.</p>
+                </div>
+
+                <div class="report-section">
+                    <h4>🎯 Goal Achievement</h4>
+                    <p>Family goals are being met with 75% completion rate for the current period.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Add Child Modal -->
+    <div id="addChildModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Child</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addChildForm">
+                    <div class="form-group">
+                        <label for="childName">Child's Name:</label>
+                        <input type="text" id="childName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="childAge">Age:</label>
+                        <input type="number" id="childAge" min="4" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Choose Avatar:</label>
+                        <div class="avatar-selection">
+                            <div class="avatar-option" data-avatar="🐱">🐱</div>
+                            <div class="avatar-option" data-avatar="🐶">🐶</div>
+                            <div class="avatar-option" data-avatar="🐰">🐰</div>
+                            <div class="avatar-option" data-avatar="🐸">🐸</div>
+                            <div class="avatar-option" data-avatar="🐼">🐼</div>
+                            <div class="avatar-option" data-avatar="🐨">🐨</div>
+                            <div class="avatar-option" data-avatar="🦊">🦊</div>
+                            <div class="avatar-option" data-avatar="🐯">🐯</div>
+                            <div class="avatar-option" data-avatar="🦁">🦁</div>
+                            <div class="avatar-option" data-avatar="🐮">🐮</div>
+                            <div class="avatar-option" data-avatar="🐷">🐷</div>
+                            <div class="avatar-option" data-avatar="🐸">🐸</div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Add Child</button>
+                        <button type="button" class="btn-secondary" onclick="parentDashboard.closeModal('addChildModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Goal Modal -->
+    <div id="createGoalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Goal</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGoalForm">
+                    <div class="form-group">
+                        <label for="goalTitle">Goal Title:</label>
+                        <input type="text" id="goalTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalType">Goal Type:</label>
+                        <select id="goalType" required>
+                            <option value="family">Family Goal</option>
+                            <option value="individual">Individual Goal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalTarget">Target:</label>
+                        <input type="number" id="goalTarget" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalMetric">Metric:</label>
+                        <select id="goalMetric" required>
+                            <option value="books">Books Read</option>
+                            <option value="stars">Stars Earned</option>
+                            <option value="time">Reading Time (minutes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDeadline">Deadline:</label>
+                        <input type="date" id="goalDeadline" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDescription">Description:</label>
+                        <textarea id="goalDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Create Goal</button>
+                        <button type="button" class="btn-secondary" onclick="parentDashboard.closeModal('createGoalModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="parent.js"></script>
+</body>
+</html> 

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDOBO - Interface Test</title>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        .test-section h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .interface-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .interface-link {
+            display: block;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .interface-link:hover {
+            transform: translateY(-2px);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 KIDOBO Interface Test</h1>
+        
+        <div class="test-section">
+            <h2>📁 File Structure Check</h2>
+            <div id="fileCheck"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔗 Interface Access</h2>
+            <p>Click the links below to test each interface:</p>
+            <div class="interface-links">
+                <a href="index.html" class="interface-link">🏠 Main Page</a>
+                <a href="child.html" class="interface-link">👶 Child Interface</a>
+                <a href="parent.html" class="interface-link">👨‍👩‍👧‍👦 Parent Interface</a>
+                <a href="admin.html" class="interface-link">🔧 Admin Interface</a>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 Quick Login Test</h2>
+            <p>Test login functionality for each role:</p>
+            <div class="interface-links">
+                <button onclick="testLogin('child')" class="interface-link">Test Child Login</button>
+                <button onclick="testLogin('parent')" class="interface-link">Test Parent Login</button>
+                <button onclick="testLogin('admin')" class="interface-link">Test Admin Login</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧹 Clear Data</h2>
+            <p>Clear all stored data to reset the application:</p>
+            <button onclick="clearAllData()" class="interface-link" style="background: #dc3545;">Clear All Data</button>
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+    </div>
+
+    <script>
+        // Check if all required files exist
+        function checkFiles() {
+            const requiredFiles = [
+                'index.html',
+                'child.html',
+                'parent.html',
+                'admin.html',
+                'child.js',
+                'parent.js',
+                'admin.js',
+                'child.css',
+                'parent.css',
+                'admin.css',
+                'styles.css',
+                'script.js'
+            ];
+            
+            const fileCheck = document.getElementById('fileCheck');
+            let allFilesExist = true;
+            
+            requiredFiles.forEach(file => {
+                const status = document.createElement('div');
+                status.className = 'status';
+                
+                // Simple check - try to fetch the file
+                fetch(file)
+                    .then(response => {
+                        if (response.ok) {
+                            status.className = 'status success';
+                            status.textContent = `✅ ${file} - Found`;
+                        } else {
+                            status.className = 'status error';
+                            status.textContent = `❌ ${file} - Not Found`;
+                            allFilesExist = false;
+                        }
+                    })
+                    .catch(() => {
+                        status.className = 'status error';
+                        status.textContent = `❌ ${file} - Error Loading`;
+                        allFilesExist = false;
+                    });
+                
+                fileCheck.appendChild(status);
+            });
+            
+            // Overall status
+            setTimeout(() => {
+                const overallStatus = document.createElement('div');
+                overallStatus.className = `status ${allFilesExist ? 'success' : 'error'}`;
+                overallStatus.textContent = allFilesExist ? 
+                    '🎉 All files are present and accessible!' : 
+                    '⚠️ Some files are missing or inaccessible';
+                fileCheck.appendChild(overallStatus);
+            }, 1000);
+        }
+        
+        // Test login functionality
+        function testLogin(role) {
+            const testUser = {
+                id: Date.now(),
+                type: role,
+                name: `Test ${role.charAt(0).toUpperCase() + role.slice(1)}`,
+                age: role === 'child' ? 7 : null,
+                avatar: '🐱',
+                createdAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('kidoboCurrentUser', JSON.stringify(testUser));
+            
+            let targetPage;
+            switch(role) {
+                case 'child':
+                    targetPage = 'child.html';
+                    break;
+                case 'parent':
+                    targetPage = 'parent.html';
+                    break;
+                case 'admin':
+                    targetPage = 'admin.html';
+                    break;
+            }
+            
+            alert(`Test ${role} user created! Redirecting to ${targetPage}...`);
+            window.location.href = targetPage;
+        }
+        
+        // Clear all stored data
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all stored data? This will reset the application.')) {
+                localStorage.clear();
+                alert('All data cleared! The application has been reset.');
+                location.reload();
+            }
+        }
+        
+        // Initialize test page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFiles();
+        });
+    </script>
+</body>
+</html> 
