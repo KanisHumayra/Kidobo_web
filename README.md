@@ -54,6 +54,7 @@ Admin Panel - Content management and analytics
 
 📁 Project Structure
 Kidobo_web/
+
 ├── index.html              # Main landing page and login
 
 ├── styles.css              # Global styles and main dashboard
@@ -172,20 +173,20 @@ Start exploring
 
 Use the demo accounts below to test different roles
 
-*🔑 Demo Accounts
-Admin Access*
+🔑 Demo Accounts
+Admin Access
 
 Email: admin@kidobo.com
 
-Password: admin123
+Password: Admin@123
 
 Features: Full platform management, analytics, user management
 
 Parent Access
 
-Email: sarah@kidobo.com
+Email: parent@kidobo.com
 
-Password: parent123
+Password: Parent@123
 
 Features: Child monitoring, progress tracking, goal setting
 
