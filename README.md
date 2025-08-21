@@ -63,20 +63,35 @@ Admin Panel - Content management and analytics
 📁 Project Structure
 Kidobo_web/
 ├── index.html              # Main landing page and login
+
 ├── styles.css              # Global styles and main dashboard
+
 ├── script.js               # Main application logic
+
 ├── child.html              # Child user interface
+
 ├── child.css               # Child interface styling
+
 ├── child.js                # Child functionality
+
 ├── parent.html             # Parent dashboard
+
 ├── parent.css              # Parent dashboard styling
+
 ├── parent.js               # Parent functionality
+
 ├── admin.html              # Admin panel
+
 ├── admin.css               # Admin panel styling
+
 ├── admin.js                # Admin functionality
+
 ├── signup.html             # User registration page
+
 ├── signup.js               # Registration logic
+
 ├── README.md               # This file
+
 └── assets/                 # Images and resources
 
 🎮 Features Breakdown
