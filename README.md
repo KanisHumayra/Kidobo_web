@@ -3,14 +3,6 @@
 An Interactive Educational Web Platform for Children Aged 4-10
 
 
-
-
-
-
-
-
-
-
 🌟 Project Overview
 
 KIDOBO is a comprehensive, interactive educational web platform designed to make reading fun and engaging for children aged 4-10. The platform combines storytelling, interactive games, and educational content to improve literacy and critical thinking skills in a child-friendly environment.
@@ -180,8 +172,8 @@ Start exploring
 
 Use the demo accounts below to test different roles
 
-🔑 Demo Accounts
-Admin Access
+*🔑 Demo Accounts
+Admin Access*
 
 Email: admin@kidobo.com
 
