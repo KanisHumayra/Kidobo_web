@@ -22,6 +22,7 @@ const stories = [
         category: "animals",
         ageGroup: "4-6",
         description: "A tiny mouse learns that courage comes in all sizes!",
+        coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FcwRWGDeXgU-0.webp&w=800&h=800&f=webp",
         pages: [
             {
                 text: "Once upon a time, there was a little mouse named Max who lived in a cozy hole under a big oak tree.",
@@ -72,6 +73,7 @@ const stories = [
         category: "fantasy",
         ageGroup: "7-8",
         description: "A magical garden where flowers can talk and dreams come true!",
+        coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FcHbxngjcTV-0.webp&w=800&h=800&f=webp",
         pages: [
             {
                 text: "In a hidden corner of the world, there was a garden where magic grew like flowers.",
@@ -118,6 +120,7 @@ const stories = [
         category: "science",
         ageGroup: "9-10",
         description: "Join Captain Star on an exciting journey through the solar system!",
+        coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FpQqeMrnrBd-0.webp&w=800&h=800&f=webp",
         pages: [
             {
                 text: "Captain Star and her crew were on a mission to explore the planets of our solar system.",
@@ -159,6 +162,197 @@ const stories = [
                 question: "What color is Mars?",
                 options: ["Blue", "Green", "Red", "Yellow"],
                 correct: 2
+            }
+        ]
+    },
+    {
+        id: 4,
+        title: "The Rainbow Fish",
+        category: "ocean",
+        ageGroup: "5-7",
+        description: "A beautiful fish learns the joy of sharing with friends!",
+        coverUrl: "https://bedtimestorieskd.com/wp-content/uploads/2024/02/The-rainbow-fish-story.webp",
+        pages: [
+            { text: "Deep in the ocean lived a beautiful fish with rainbow scales that sparkled like jewels.", image: "🐠" },
+            { text: "All the other fish admired his beautiful scales, but he never shared them with anyone.", image: "🌊" },
+            { text: "One day, a little blue fish asked for just one tiny scale. The rainbow fish refused.", image: "🐟" },
+            { text: "Soon, no fish wanted to play with him. He felt lonely and sad.", image: "😢" },
+            { text: "The rainbow fish decided to share his scales with all the other fish.", image: "✨" },
+            { text: "Now everyone was happy, and the rainbow fish had many friends to play with!", image: "🎉" }
+        ],
+        quiz: [
+            {
+                question: "What made the rainbow fish special?",
+                options: ["His size", "His rainbow scales", "His speed", "His voice"],
+                correct: 1
+            },
+            {
+                question: "What did the rainbow fish learn?",
+                options: ["To swim fast", "To hide", "To share", "To be quiet"],
+                correct: 2
+            }
+        ]
+    },
+    {
+        id: 5,
+        title: "The Little Red Hen",
+        category: "farm",
+        ageGroup: "6-8",
+        description: "A hardworking hen teaches her friends about helping and responsibility!",
+        coverUrl: "https://www.plato-philosophy.org/wp-content/uploads/littleredhen.jpg",
+        pages: [
+            { text: "Once upon a time, there was a little red hen who lived on a farm with her friends.", image: "🐔" },
+            { text: "One day, she found some wheat seeds and wanted to plant them to make bread.", image: "🌾" },
+            { text: "She asked her friends, 'Who will help me plant the wheat?' 'Not I!' they all said.", image: "❌" },
+            { text: "So the little red hen planted the wheat all by herself. She watered it and cared for it.", image: "💧" },
+            { text: "When the wheat was ready, she harvested it and took it to the mill to make flour.", image: "🏭" },
+            { text: "She baked delicious bread and enjoyed it with her family. Her friends learned that helping brings rewards!", image: "🍞" }
+        ],
+        quiz: [
+            {
+                question: "What did the little red hen want to make?",
+                options: ["A house", "Bread", "A garden", "A nest"],
+                correct: 1
+            },
+            {
+                question: "What did her friends learn?",
+                options: ["To fly", "To help others", "To sing", "To sleep"],
+                correct: 1
+            }
+        ]
+    },
+    {
+        id: 6,
+        title: "Jungle Adventure",
+        category: "adventure",
+        ageGroup: "4-6",
+        description: "A group of friends explores a friendly jungle full of surprises!",
+        coverUrl: "https://m.media-amazon.com/images/I/91g5qMqosYL._SY425_.jpg",
+        pages: [
+            { text: "Mia and Leo entered the jungle and heard birds singing all around.", image: "🐦" },
+            { text: "They followed a path where butterflies danced in the sunlight.", image: "🦋" },
+            { text: "A friendly monkey waved from a tree and tossed them a banana.", image: "🐒" },
+            { text: "They crossed a tiny stream and saw colorful fish swimming.", image: "🐠" },
+            { text: "At sunset, the jungle glowed golden, and they headed home smiling.", image: "🌅" }
+        ],
+        quiz: [
+            {
+                question: "Who explored the jungle?",
+                options: ["Max and Tom", "Mia and Leo", "Sam and Sue", "Lily and Ben"],
+                correct: 1
+            },
+            {
+                question: "What did the monkey toss?",
+                options: ["An apple", "A banana", "A coconut", "A mango"],
+                correct: 1
+            }
+        ]
+    },
+    {
+        id: 7,
+        title: "Princess and the Dragon",
+        category: "fantasy",
+        ageGroup: "7-8",
+        description: "A brave princess makes friends with a gentle dragon.",
+        coverUrl: "https://as1.ftcdn.net/jpg/14/22/11/48/1000_F_1422114835_gQfJfA15SrUOpKvruPRxjcyTxlDYQAYp.jpg",
+        pages: [
+            { text: "Princess Aria heard a roar from the mountain and went to see.", image: "👸" },
+            { text: "She found a dragon with a hurt wing hiding behind flowers.", image: "🐉" },
+            { text: "Aria bandaged the wing and told a funny story to cheer it up.", image: "🩹" },
+            { text: "The dragon smiled and promised to guard the kingdom kindly.", image: "😊" },
+            { text: "They became best friends and watched the stars together.", image: "⭐" }
+        ],
+        quiz: [
+            {
+                question: "What was hurt?",
+                options: ["Tail", "Wing", "Foot", "Ear"],
+                correct: 1
+            },
+            {
+                question: "What did the dragon promise?",
+                options: ["To leave", "To guard the kingdom", "To fly away", "To sleep"],
+                correct: 1
+            }
+        ]
+    },
+    {
+        id: 8,
+        title: "Pirate Treasure Hunt",
+        category: "adventure",
+        ageGroup: "7-8",
+        description: "Two pirates follow a map to find a friendly surprise.",
+        coverUrl: "https://m.media-amazon.com/images/I/91r7m3lUhDL._SY425_.jpg",
+        pages: [
+            { text: "Captain Pip and matey Dot found an old map in a bottle.", image: "🗺️" },
+            { text: "They sailed to an island and climbed a sandy hill.", image: "🏝️" },
+            { text: "X marked a spot near a funny-shaped rock.", image: "❌" },
+            { text: "They dug and found a chest full of shiny friendship bracelets!", image: "💎" },
+            { text: "They shared the treasure with island kids and danced.", image: "💃" }
+        ],
+        quiz: [
+            {
+                question: "What was inside the chest?",
+                options: ["Gold", "Shells", "Bracelets", "Books"],
+                correct: 2
+            },
+            {
+                question: "Where was the X?",
+                options: ["On a tree", "Near a rock", "Under a boat", "In the water"],
+                correct: 1
+            }
+        ]
+    },
+    {
+        id: 9,
+        title: "Robot's First Day",
+        category: "science",
+        ageGroup: "6-8",
+        description: "A shy robot learns to make friends at school.",
+        coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FPmXXmLiTqi-3.webp&w=800&h=800&f=webp",
+        pages: [
+            { text: "Robo-3 beeped nervously as school began.", image: "🤖" },
+            { text: "He helped carry books with his little metal arms.", image: "📚" },
+            { text: "At lunch, he shared his extra apple batteries (just pretend!).", image: "🍎" },
+            { text: "He fixed a toy and made the class cheer.", image: "🔧" },
+            { text: "Robo-3 smiled: making friends was easy after all!", image: "😊" }
+        ],
+        quiz: [
+            {
+                question: "What did Robo-3 fix?",
+                options: ["A car", "A toy", "A door", "A bike"],
+                correct: 1
+            },
+            {
+                question: "How did the class react?",
+                options: ["They slept", "They cheered", "They left", "They cried"],
+                correct: 1
+            }
+        ]
+    },
+    {
+        id: 10,
+        title: "Winter Wonderland",
+        category: "adventure",
+        ageGroup: "4-6",
+        description: "A snowy day of building, sledding, and warm surprises.",
+        coverUrl: "https://ik.imagekit.io/storybird/images/6d42575d-09a9-4ddd-b517-4b4323e5a92b/0_73418309.png?tr=q-80",
+        pages: [
+            { text: "Snowflakes fell as Nora ran outside to play.", image: "❄️" },
+            { text: "She built a snow-friend with a carrot nose.", image: "☃️" },
+            { text: "Her sled whooshed down the happy little hill.", image: "🛷" },
+            { text: "They sipped cocoa and watched the twinkling sky.", image: "☕" },
+            { text: "It was the coziest winter day ever!", image: "🌟" }
+        ],
+        quiz: [
+            {
+                question: "What did Nora build?",
+                options: ["A castle", "A snow-friend", "A robot", "A car"],
+                correct: 1
+            },
+            {
+                question: "What did they drink?",
+                options: ["Juice", "Cocoa", "Tea", "Milk"],
+                correct: 1
             }
         ]
     }
@@ -211,19 +405,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeApp() {
-    // Hide loading screen after a short delay
-    setTimeout(() => {
-        document.getElementById('loadingScreen').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('loadingScreen').style.display = 'none';
-        }, 500);
-    }, 2000);
+    // Hide loading screen immediately for seamless UX
+    const ls = document.getElementById('loadingScreen');
+    if (ls) {
+        ls.style.opacity = '0';
+        ls.style.display = 'none';
+    }
 
     // Load user data from localStorage
     loadUserData();
     
     // Set up event listeners
     setupEventListeners();
+    
+    // Prepare story images - using updated covers from child.js
+    // applyCartoonImages(); // Disabled to use updated covers
     
     // Load stories
     loadStories();
@@ -234,6 +430,13 @@ function initializeApp() {
     // Update UI
     updateUI();
 }
+
+// Function removed - covers are now set directly in the stories array
+// function applyCartoonImages() {
+//     // This function has been removed to prevent overriding our updated book covers
+//     // All covers are now set directly in the stories array with high-quality images
+//     console.log('applyCartoonImages function removed - using updated covers from stories array');
+// }
 
 function setupEventListeners() {
     // Navigation
@@ -353,8 +556,9 @@ function loadStories() {
 function createStoryCard(story) {
     const card = document.createElement('div');
     card.className = 'story-card';
+    const cover = story.coverUrl ? `<img src="${story.coverUrl}" alt="${story.title} cover"/>` : `${(story.pages && story.pages[0] && story.pages[0].image) || ''}`;
     card.innerHTML = `
-        <div class="story-image">${story.pages[0].image}</div>
+        <div class="story-image">${cover}</div>
         <div class="story-info">
             <h3 class="story-title">${story.title}</h3>
             <div class="story-meta">
@@ -399,8 +603,9 @@ function loadStoryPage() {
     currentStory.pages.forEach((page, index) => {
         const pageDiv = document.createElement('div');
         pageDiv.className = `story-page ${index === currentPage ? 'active' : ''}`;
+        const imageHtml = page.imageUrl ? `<img src="${page.imageUrl}" alt="${currentStory.title} page ${index + 1}"/>` : (page.image ? `<div class="story-page-emoji">${page.image}</div>` : '');
         pageDiv.innerHTML = `
-            <div class="story-page-image">${page.image}</div>
+            <div class="story-page-image">${imageHtml}</div>
             <div class="story-page-text">${page.text}</div>
         `;
         storyPages.appendChild(pageDiv);
@@ -451,6 +656,7 @@ function previousPage() {
 }
 
 function showCurrentPage() {
+    if ('speechSynthesis' in window) { try { speechSynthesis.cancel(); } catch(e){} }
     document.querySelectorAll('.story-page').forEach((page, index) => {
         page.classList.toggle('active', index === currentPage);
     });
@@ -889,52 +1095,112 @@ function handleChildLogin(e) {
 
 function handleParentLogin(e) {
     e.preventDefault();
-    
-    const email = document.getElementById('parentEmail').value;
+	const email = document.getElementById('parentEmail').value.trim().toLowerCase();
     const password = document.getElementById('parentPassword').value;
-    
-    // Simple validation (in real app, this would connect to a backend)
-    if (email && password) {
-        currentUser = {
-            id: Date.now(),
-            type: 'parent',
-            name: email.split('@')[0], // Use email prefix as name
-            email: email,
-            createdAt: new Date().toISOString()
-        };
-        
+	let parents = [];
+	try { parents = JSON.parse(localStorage.getItem('kidoboParents')) || []; } catch(e) {}
+	// Demo fallback
+	const isDemo = (email === 'parent@kidobo.com' && password === 'Parent#123');
+	if (isDemo) {
+		currentUser = { id: Date.now(), type: 'parent', name: 'Parent', email, createdAt: new Date().toISOString() };
         localStorage.setItem('kidoboCurrentUser', JSON.stringify(currentUser));
         closeAllModals();
-        
-        // Redirect to parent interface
         window.location.href = 'parent.html';
-    }
+		return;
+	}
+	const match = parents.find(p => p.email === email);
+	if (!match) { alert('Account not found. Please sign up.'); return; }
+	(async () => {
+		const enc = new TextEncoder();
+		const buf = await crypto.subtle.digest('SHA-256', enc.encode(password + ':' + match.salt));
+		const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+		if (hash !== match.passwordHash) { alert('Incorrect password'); return; }
+		currentUser = { id: match.id, type: 'parent', name: match.name, email: match.email, createdAt: match.createdAt };
+		localStorage.setItem('kidoboCurrentUser', JSON.stringify(currentUser));
+		closeAllModals();
+		window.location.href = 'parent.html';
+	})();
 }
 
-function handleAdminLogin(e) {
+async function handleAdminLogin(e) {
     e.preventDefault();
     
-    const username = document.getElementById('adminUsername').value;
-    const password = document.getElementById('adminPassword').value;
-    
-    // Simple validation (in real app, this would connect to a backend)
-    if (username === 'admin' && password === 'admin123') {
+    const email = (document.getElementById('adminEmail')?.value || '').trim().toLowerCase();
+    const password = document.getElementById('adminPassword')?.value || '';
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Helper to hash strings
+    async function sha256Hex(text) {
+        const enc = new TextEncoder();
+        const data = enc.encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Load or initialize admin auth
+    let auth = null;
+    try { auth = JSON.parse(localStorage.getItem('kidoboAdminAuth')); } catch (e) {}
+
+    if (!auth) {
+        // Initialize default admin: admin@kidobo.com / Admin#123
+        const salt = (Math.random().toString(36).slice(2)) + Date.now();
+        const defaultEmail = 'admin@kidobo.com';
+        const defaultPass = 'Admin#123';
+        auth = {
+            salt,
+            emailHash: await sha256Hex(defaultEmail + ':' + salt),
+            passwordHash: await sha256Hex(defaultPass + ':' + salt),
+            failedAttempts: 0,
+            lockUntil: 0
+        };
+        localStorage.setItem('kidoboAdminAuth', JSON.stringify(auth));
+    }
+
+    // Check lockout
+    const now = Date.now();
+    if (auth.lockUntil && now < auth.lockUntil) {
+        const remaining = Math.ceil((auth.lockUntil - now) / 60000);
+        alert(`Too many attempts. Try again in ${remaining} minute(s).`);
+        return;
+    }
+
+    const emailHash = await sha256Hex(email + ':' + auth.salt);
+    const passHash = await sha256Hex(password + ':' + auth.salt);
+
+    const ok = (emailHash === auth.emailHash) && (passHash === auth.passwordHash);
+    if (!ok) {
+        auth.failedAttempts = (auth.failedAttempts || 0) + 1;
+        if (auth.failedAttempts >= 5) {
+            auth.lockUntil = Date.now() + 10 * 60 * 1000; // 10 minutes
+            auth.failedAttempts = 0;
+        }
+        localStorage.setItem('kidoboAdminAuth', JSON.stringify(auth));
+        alert('Invalid email or password.');
+        return;
+    }
+
+    // Success
+    auth.failedAttempts = 0;
+    auth.lockUntil = 0;
+    localStorage.setItem('kidoboAdminAuth', JSON.stringify(auth));
+
         currentUser = {
             id: Date.now(),
             type: 'admin',
             name: 'Administrator',
-            username: username,
+        email: email,
             createdAt: new Date().toISOString()
         };
         
         localStorage.setItem('kidoboCurrentUser', JSON.stringify(currentUser));
         closeAllModals();
-        
-        // Redirect to admin interface
         window.location.href = 'admin.html';
-    } else {
-        alert('Invalid admin credentials. Try admin/admin123');
-    }
 }
 
 function showAvatarModal() {

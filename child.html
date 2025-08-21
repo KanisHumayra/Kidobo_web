@@ -9,16 +9,6 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-animation">
-                <div class="child-icon">👶</div>
-                <div class="loading-text">Loading KIDOBO...</div>
-                <div class="loading-subtitle">Getting ready for fun reading!</div>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="child-navbar">
@@ -364,6 +354,9 @@
                     <button id="playNarrationBtn" class="control-btn">🔊</button>
                 </div>
                 <div class="story-content">
+                    <div id="storyImageContainer" class="story-visual" style="margin-bottom:12px;">
+                        <img id="storyImage" alt="Story page image" style="display:block; max-height:260px; width:100%; object-fit:cover; border-radius:12px;"/>
+                    </div>
                     <div id="storyText" class="story-text">
                         Story content will appear here...
                     </div>

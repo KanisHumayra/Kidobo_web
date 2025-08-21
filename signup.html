@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>KIDOBO - Create Account</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<style>
+		.signup-wrapper { max-width: 520px; margin: 60px auto; background: rgba(255,255,255,0.95); border-radius: 16px; box-shadow: var(--shadow-lg); padding: 28px; }
+		.signup-header { text-align: center; margin-bottom: 16px; }
+		.signup-header h2 { margin-bottom: 8px; }
+		.form-group { margin: 10px 0; }
+		label { display: block; margin-bottom: 6px; font-weight: 600; }
+		input { width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 10px; }
+		.helper { margin-top: 10px; font-size: 14px; color: var(--text-secondary); }
+		.btn-primary { width: 100%; margin-top: 12px; }
+		.note { background: #fff8e1; color: #7a5e00; border: 1px solid #ffe082; padding: 10px 12px; border-radius: 8px; margin-top: 12px; }
+	</style>
+</head>
+<body>
+	<div class="signup-wrapper">
+		<div class="signup-header">
+			<h2>Create Parent Account</h2>
+			<p>Sign up with your email and choose a strong password.</p>
+		</div>
+		<form id="signupForm">
+			<div class="form-group">
+				<label for="parentName">Your Name</label>
+				<input type="text" id="parentName" required>
+			</div>
+			<div class="form-group">
+				<label for="parentEmail">Email</label>
+				<input type="email" id="parentEmail" required>
+			</div>
+			<div class="form-group">
+				<label for="parentPassword">Password</label>
+				<input type="password" id="parentPassword" placeholder="At least 8 chars, 1 number, 1 symbol" required>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm Password</label>
+				<input type="password" id="confirmPassword" required>
+			</div>
+			<button type="submit" class="btn-primary">Create Account</button>
+			<div class="helper">Already have an account? <a href="index.html">Back to login</a></div>
+			<div class="note">Default demo accounts: Admin email <b>admin@kidobo.com</b>, password <b>Admin#123</b>. Demo Parent email <b>parent@kidobo.com</b>, password <b>Parent#123</b>.</div>
+		</form>
+	</div>
+
+	<script src="signup.js"></script>
+</body>
+</html> 

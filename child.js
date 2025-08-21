@@ -15,7 +15,7 @@ class ChildInterface {
             achievements: []
         };
         
-        // Sample Stories Data
+        // Sample Stories Data - 5 Complete Stories with Varied Images
         this.stories = [
             {
                 id: 1,
@@ -23,31 +23,31 @@ class ChildInterface {
                 category: "animals",
                 ageGroup: "4-6",
                 description: "A tiny mouse learns that courage comes in all sizes!",
-                image: "🐭",
+                coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FcwRWGDeXgU-0.webp&w=800&h=800&f=webp",
                 pages: [
                     {
                         text: "Once upon a time, there was a little mouse named Max who lived in a cozy hole under a big oak tree.",
-                        image: "🐭"
+                        imageUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FcwRWGDeXgU-1.webp&w=800&h=800&f=webp"
                     },
                     {
                         text: "Max was very small, but he had a big heart. He loved to help his friends in the forest.",
-                        image: "🌳"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "One day, Max heard a loud noise. It was a big cat chasing a baby bird!",
-                        image: "🐱"
+                        imageUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Even though Max was scared, he knew he had to help. He ran as fast as he could!",
-                        image: "🏃"
+                        imageUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Max made such a loud squeak that the cat got scared and ran away!",
-                        image: "😱"
+                        imageUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "The baby bird was safe, and Max learned that being brave means helping others, no matter how small you are.",
-                        image: "🦅"
+                        imageUrl: "https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     }
                 ],
                 quiz: [
@@ -74,27 +74,27 @@ class ChildInterface {
                 category: "fantasy",
                 ageGroup: "7-8",
                 description: "A magical garden where flowers can talk and dreams come true!",
-                image: "🌸",
+                coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FcHbxngjcTV-0.webp&w=800&h=800&f=webp",
                 pages: [
                     {
                         text: "In a hidden corner of the world, there was a garden where magic grew like flowers.",
-                        image: "🌸"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "The flowers could talk and sing, and they loved to share stories with children who visited.",
-                        image: "🌺"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "One day, a sad little girl named Lily found the garden. She had lost her favorite toy.",
-                        image: "👧"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "The flowers felt her sadness and decided to help. They used their magic to find her toy!",
-                        image: "🧸"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Lily was so happy! She promised to visit the garden every day and share her own stories.",
-                        image: "😊"
+                        imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     }
                 ],
                 quiz: [
@@ -121,31 +121,31 @@ class ChildInterface {
                 category: "science",
                 ageGroup: "9-10",
                 description: "Join Captain Star on an exciting journey through the solar system!",
-                image: "🚀",
+                coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FpQqeMrnrBd-0.webp&w=800&h=800&f=webp",
                 pages: [
                     {
                         text: "Captain Star and her crew were on a mission to explore the planets of our solar system.",
-                        image: "🚀"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "First, they visited Mercury, the closest planet to the Sun. It was very hot!",
-                        image: "☀️"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Next was Venus, covered in thick clouds. The crew had to be very careful.",
-                        image: "🌫️"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Then they reached Earth, our beautiful blue planet with oceans and continents.",
-                        image: "🌍"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "Mars was red and dusty, with the biggest volcano in the solar system!",
-                        image: "🔴"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     },
                     {
                         text: "The crew learned that each planet is unique and special, just like every child on Earth.",
-                        image: "⭐"
+                        imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
                     }
                 ],
                 quiz: [
@@ -165,10 +165,197 @@ class ChildInterface {
                         correct: 2
                     }
                 ]
+            },
+            {
+                id: 4,
+                title: "The Rainbow Fish",
+                category: "ocean",
+                ageGroup: "5-7",
+                description: "A beautiful fish learns the joy of sharing with friends!",
+                coverUrl: "https://bedtimestorieskd.com/wp-content/uploads/2024/02/The-rainbow-fish-story.webp",
+                pages: [
+                    {
+                        text: "Deep in the ocean lived a beautiful fish with rainbow scales that sparkled like jewels.",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "All the other fish admired his beautiful scales, but he never shared them with anyone.",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "One day, a little blue fish asked for just one tiny scale. The rainbow fish refused.",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "Soon, no fish wanted to play with him. He felt lonely and sad.",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "The rainbow fish decided to share his scales with all the other fish.",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "Now everyone was happy, and the rainbow fish had many friends to play with!",
+                        imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    }
+                ],
+                quiz: [
+                    {
+                        question: "What made the rainbow fish special?",
+                        options: ["His size", "His rainbow scales", "His speed", "His voice"],
+                        correct: 1
+                    },
+                    {
+                        question: "What did the rainbow fish learn?",
+                        options: ["To swim fast", "To hide", "To share", "To be quiet"],
+                        correct: 2
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "The Little Red Hen",
+                category: "farm",
+                ageGroup: "6-8",
+                description: "A hardworking hen teaches her friends about helping and responsibility!",
+                coverUrl: "https://www.plato-philosophy.org/wp-content/uploads/littleredhen.jpg",
+                pages: [
+                    {
+                        text: "Once upon a time, there was a little red hen who lived on a farm with her friends.",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "One day, she found some wheat seeds and wanted to plant them to make bread.",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "She asked her friends, 'Who will help me plant the wheat?' 'Not I!' they all said.",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "So the little red hen planted the wheat all by herself. She watered it and cared for it.",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "When the wheat was ready, she harvested it and took it to the mill to make flour.",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    },
+                    {
+                        text: "She baked delicious bread and enjoyed it with her family. Her friends learned that helping brings rewards!",
+                        imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                    }
+                ],
+                quiz: [
+                    {
+                        question: "What did the little red hen want to make?",
+                        options: ["A house", "Bread", "A garden", "A nest"],
+                        correct: 1
+                    },
+                    {
+                        question: "What did her friends learn?",
+                        options: ["To fly", "To help others", "To sing", "To sleep"],
+                        correct: 1
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title: "Jungle Adventure",
+                category: "adventure",
+                ageGroup: "4-6",
+                description: "A group of friends explores a friendly jungle full of surprises!",
+                coverUrl: "https://m.media-amazon.com/images/I/91g5qMqosYL._SY425_.jpg",
+                pages: [
+                    { text: "Mia and Leo entered the jungle and heard birds singing all around.", imageUrl: "https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They followed a path where butterflies danced in the sunlight.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "A friendly monkey waved from a tree and tossed them a banana.", imageUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They crossed a tiny stream and saw colorful fish swimming.", imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "At sunset, the jungle glowed golden, and they headed home smiling.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+                ],
+                quiz: [
+                    { question: "Who explored the jungle?", options: ["Max and Tom", "Mia and Leo", "Sam and Sue", "Lily and Ben"], correct: 1 },
+                    { question: "What did the monkey toss?", options: ["An apple", "A banana", "A coconut", "A mango"], correct: 1 }
+                ]
+            },
+            {
+                id: 7,
+                title: "Princess and the Dragon",
+                category: "fantasy",
+                ageGroup: "7-8",
+                description: "A brave princess makes friends with a gentle dragon.",
+                coverUrl: "https://as1.ftcdn.net/jpg/14/22/11/48/1000_F_1422114835_gQfJfA15SrUOpKvruPRxjcyTxlDYQAYp.jpg",
+                pages: [
+                    { text: "Princess Aria heard a roar from the mountain and went to see.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "She found a dragon with a hurt wing hiding behind flowers.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "Aria bandaged the wing and told a funny story to cheer it up.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "The dragon smiled and promised to guard the kingdom kindly.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They became best friends and watched the stars together.", imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+                ],
+                quiz: [
+                    { question: "What was hurt?", options: ["Tail", "Wing", "Foot", "Ear"], correct: 1 },
+                    { question: "What did the dragon promise?", options: ["To leave", "To guard the kingdom", "To fly away", "To sleep"], correct: 1 }
+                ]
+            },
+            {
+                id: 8,
+                title: "Pirate Treasure Hunt",
+                category: "adventure",
+                ageGroup: "7-8",
+                description: "Two pirates follow a map to find a friendly surprise.",
+                coverUrl: "https://m.media-amazon.com/images/I/91r7m3lUhDL._SY425_.jpg",
+                pages: [
+                    { text: "Captain Pip and matey Dot found an old map in a bottle.", imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They sailed to an island and climbed a sandy hill.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "X marked a spot near a funny-shaped rock.", imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They dug and found a chest full of shiny friendship bracelets!", imageUrl: "https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They shared the treasure with island kids and danced.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+                ],
+                quiz: [
+                    { question: "What was inside the chest?", options: ["Gold", "Shells", "Bracelets", "Books"], correct: 2 },
+                    { question: "Where was the X?", options: ["On a tree", "Near a rock", "Under a boat", "In the water"], correct: 1 }
+                ]
+            },
+            {
+                id: 9,
+                title: "Robot's First Day",
+                category: "science",
+                ageGroup: "6-8",
+                description: "A shy robot learns to make friends at school.",
+                coverUrl: "https://www.storybooks.app/_image?href=https%3A%2F%2Fstory-cdn.storybooks.app%2FPmXXmLiTqi-3.webp&w=800&h=800&f=webp",
+                pages: [
+                    { text: "Robo-3 beeped nervously as school began.", imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "He helped carry books with his little metal arms.", imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "At lunch, he shared his extra apple batteries (just pretend!).", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "He fixed a toy and made the class cheer.", imageUrl: "https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "Robo-3 smiled: making friends was easy after all!", imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+                ],
+                quiz: [
+                    { question: "What did Robo-3 fix?", options: ["A car", "A toy", "A door", "A bike"], correct: 1 },
+                    { question: "How did the class react?", options: ["They slept", "They cheered", "They left", "They cried"], correct: 1 }
+                ]
+            },
+            {
+                id: 10,
+                title: "Winter Wonderland",
+                category: "adventure",
+                ageGroup: "4-6",
+                description: "A snowy day of building, sledding, and warm surprises.",
+                coverUrl: "https://ik.imagekit.io/storybird/images/6d42575d-09a9-4ddd-b517-4b4323e5a92b/0_73418309.png?tr=q-80",
+                pages: [
+                    { text: "Snowflakes fell as Nora ran outside to play.", imageUrl: "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "She built a snow-friend with a carrot nose.", imageUrl: "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "Her sled whooshed down the happy little hill.", imageUrl: "https://images.pexels.com/photos/2156311/pexels-photo-2156311.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "They sipped cocoa and watched the twinkling sky.", imageUrl: "https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+                    { text: "It was the coziest winter day ever!", imageUrl: "https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+                ],
+                quiz: [
+                    { question: "What did Nora build?", options: ["A castle", "A snow-friend", "A robot", "A car"], correct: 1 },
+                    { question: "What did they drink?", options: ["Juice", "Cocoa", "Tea", "Milk"], correct: 1 }
+                ]
             }
         ];
 
-        // Sample Games Data
+        // Sample Games Data - Expanded with more games
         this.games = {
             'word-match': {
                 title: 'Word Match',
@@ -179,7 +366,9 @@ class ChildInterface {
                     { word: 'Adventure', meaning: 'Exciting journey' },
                     { word: 'Friendship', meaning: 'Being good friends' },
                     { word: 'Courage', meaning: 'Being brave' },
-                    { word: 'Wonder', meaning: 'Amazing feeling' }
+                    { word: 'Wonder', meaning: 'Amazing feeling' },
+                    { word: 'Kindness', meaning: 'Being nice to others' },
+                    { word: 'Imagination', meaning: 'Creative thinking' }
                 ]
             },
             'vocabulary-quiz': {
@@ -205,6 +394,11 @@ class ChildInterface {
                         question: 'What is "friendship"?',
                         options: ['Being alone', 'Being friends', 'Being angry', 'Being tired'],
                         correct: 1
+                    },
+                    {
+                        question: 'What does "kindness" mean?',
+                        options: ['Being mean', 'Being nice', 'Being loud', 'Being quiet'],
+                        correct: 1
                     }
                 ]
             },
@@ -219,6 +413,25 @@ class ChildInterface {
                 description: 'Speed reading with comprehension',
                 text: "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet. Reading quickly helps you understand stories better. Practice makes perfect!",
                 timeLimit: 30
+            },
+            'picture-story': {
+                title: 'Picture Story',
+                description: 'Create a story from pictures',
+                images: [
+                    { url: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop', prompt: 'A magical forest' },
+                    { url: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop', prompt: 'A friendly cat' },
+                    { url: 'https://images.pexels.com/photos/2150/sky-space-dark-galaxy-2150.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop', prompt: 'Space adventure' }
+                ]
+            },
+            'rhyme-time': {
+                title: 'Rhyme Time',
+                description: 'Find words that rhyme',
+                words: [
+                    { word: 'Cat', rhymes: ['Hat', 'Bat', 'Rat', 'Sat'] },
+                    { word: 'Tree', rhymes: ['Bee', 'See', 'Free', 'Key'] },
+                    { word: 'Star', rhymes: ['Car', 'Far', 'Jar', 'Bar'] },
+                    { word: 'Moon', rhymes: ['Spoon', 'Soon', 'Tune', 'June'] }
+                ]
             }
         };
 
@@ -233,6 +446,8 @@ class ChildInterface {
         this.hideLoadingScreen();
     }
 
+    // applyCartoonImages function removed - now using proper themed images
+
     loadUserData() {
         const savedUser = localStorage.getItem('kidoboCurrentUser');
         const savedStats = localStorage.getItem('kidoboChildStats');
@@ -240,14 +455,57 @@ class ChildInterface {
         if (savedUser) {
             this.currentUser = JSON.parse(savedUser);
         } else {
-            // Redirect to main page if no user
-            window.location.href = 'index.html';
-            return;
+            // Create dummy user data for demo
+            this.currentUser = {
+                id: 1,
+                name: "Alex Johnson",
+                age: 7,
+                avatar: "👦",
+                level: "Reader",
+                joinDate: "2024-01-15"
+            };
         }
         
         if (savedStats) {
             this.userStats = JSON.parse(savedStats);
+        } else {
+            // Create dummy stats for demo
+            this.userStats = {
+                booksRead: 12,
+                totalStars: 85,
+                readingTime: 45,
+                gamesPlayed: 8,
+                achievements: [
+                    { id: 1, name: "First Book", description: "Read your first story", icon: "📚", earned: "2024-01-20" },
+                    { id: 2, name: "Speed Reader", description: "Read 5 books in one day", icon: "⚡", earned: "2024-01-25" },
+                    { id: 3, name: "Word Master", description: "Score 100% in vocabulary quiz", icon: "🎯", earned: "2024-02-01" },
+                    { id: 4, name: "Story Explorer", description: "Read stories from all categories", icon: "🗺️", earned: "2024-02-05" }
+                ]
+            };
         }
+        
+        // Add dummy favorites
+        this.favorites = [
+            { id: 1, title: "The Brave Little Mouse", category: "animals", reason: "Love the brave mouse!" },
+            { id: 2, title: "The Magic Garden", category: "fantasy", reason: "Beautiful garden story" },
+            { id: 3, title: "The Space Adventure", category: "science", reason: "Space is awesome!" }
+        ];
+        
+        // Add dummy reading goals
+        this.readingGoals = [
+            { id: 1, title: "Read 20 books this month", target: 20, current: 12, deadline: "2024-02-29" },
+            { id: 2, title: "Learn 50 new words", target: 50, current: 35, deadline: "2024-02-15" },
+            { id: 3, title: "Complete all animal stories", target: 5, current: 3, deadline: "2024-02-20" }
+        ];
+        
+        // Add dummy recent activity
+        this.recentActivity = [
+            { id: 1, action: "Completed 'The Brave Little Mouse'", time: "2 hours ago", stars: 5 },
+            { id: 2, action: "Played Word Match game", time: "1 day ago", score: "8/10" },
+            { id: 3, action: "Earned 'First Book' achievement", time: "2 days ago", icon: "🏆" },
+            { id: 4, action: "Read 'The Magic Garden'", time: "3 days ago", stars: 4 },
+            { id: 5, action: "Completed vocabulary quiz", time: "4 days ago", score: "9/10" }
+        ];
     }
 
     saveUserData() {
@@ -347,9 +605,11 @@ class ChildInterface {
         this.stories.forEach(story => {
             const storyCard = document.createElement('div');
             storyCard.className = 'story-card';
+            console.log('Creating story card for:', story.title, 'Cover URL:', story.coverUrl);
+            const cover = story.coverUrl ? `<img src="${story.coverUrl}" alt="${story.title} cover"/>` : '';
             storyCard.innerHTML = `
                 <div class="story-image">
-                    <div class="story-placeholder">${story.image}</div>
+                    ${cover}
                 </div>
                 <div class="story-content">
                     <h3>${story.title}</h3>
@@ -405,6 +665,34 @@ class ChildInterface {
 
     loadStoryPage() {
         const page = this.currentStory.pages[this.currentPage];
+        try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch(e){}
+        
+        console.log('Loading story page:', this.currentPage, 'Image URL:', page.imageUrl);
+        
+        const imgEl = document.getElementById('storyImage');
+        if (imgEl) {
+            if (page.imageUrl) { 
+                console.log('Setting image src to:', page.imageUrl);
+                imgEl.src = page.imageUrl; 
+                imgEl.style.display = 'block'; 
+                
+                // Add error handling for images
+                imgEl.onerror = function() {
+                    console.log('Image failed to load');
+                };
+                
+                imgEl.onload = function() {
+                    console.log('Image loaded successfully');
+                };
+            } else { 
+                console.log('No image URL, hiding image');
+                imgEl.removeAttribute('src'); 
+                imgEl.style.display = 'none'; 
+            }
+        } else {
+            console.log('Story image element not found');
+        }
+        
         document.getElementById('storyText').textContent = page.text;
         document.getElementById('currentPage').textContent = this.currentPage + 1;
         document.getElementById('totalPages').textContent = this.currentStory.pages.length;

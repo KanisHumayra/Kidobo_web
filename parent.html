@@ -7,18 +7,9 @@
     <link rel="stylesheet" href="parent.css">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-animation">
-                <div class="parent-icon">👨‍👩‍👧‍👦</div>
-                <div class="loading-text">Loading Parent Dashboard...</div>
-                <div class="loading-subtitle">Getting your family's reading data ready!</div>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="parent-navbar">
@@ -212,13 +203,13 @@
                 <div class="progress-card">
                     <h3>📈 Reading Time</h3>
                     <div class="chart-container">
-                        <p>Reading time chart will appear here</p>
+                        <canvas id="readingTimeChart" width="400" height="200"></canvas>
                     </div>
                 </div>
                 <div class="progress-card">
                     <h3>📊 Books Completed</h3>
                     <div class="chart-container">
-                        <p>Books completed chart will appear here</p>
+                        <canvas id="booksCompletedChart" width="400" height="200"></canvas>
                     </div>
                 </div>
             </div>

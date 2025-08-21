@@ -62,7 +62,7 @@ body {
     font-size: var(--font-size-normal);
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ffe6f0 0%, #e6f7ff 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -2335,3 +2335,15 @@ select:focus {
         transform: translateX(100%) translateY(100%) rotate(45deg);
     }
 } 
+
+/* Story image containers for real photos */
+.story-card .story-image img { width: 100%; height: 180px; object-fit: cover; border-radius: var(--border-radius-md); display: block; }
+.story-page-image img { width: 100%; height: auto; max-height: 360px; object-fit: cover; border-radius: var(--border-radius-md); display: block; margin: 0 auto; }
+.story-page-emoji { font-size: 72px; text-align: center; } 
+
+/* Extra colorful accents for landing */
+.hero-section { background: radial-gradient( circle at 30% 20%, rgba(255,107,107,0.18), transparent 40% ), radial-gradient( circle at 70% 80%, rgba(78,205,196,0.18), transparent 40% ); border-radius: var(--border-radius-xl); }
+.btn-large { background: linear-gradient(90deg, #ff6b6b, #feca57); color: #1b1b1b; border: none; }
+.btn-large.secondary { background: linear-gradient(90deg, #54a0ff, #5f27cd); color: #fff; }
+.story-card { border: 2px solid rgba(0,0,0,0.03); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+.role-card { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8)); } 

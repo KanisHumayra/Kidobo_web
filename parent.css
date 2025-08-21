@@ -736,6 +736,13 @@ body {
     border-radius: 10px;
     color: var(--parent-text-light);
     font-weight: 500;
+    position: relative;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 200px;
 }
 
 .progress-details {

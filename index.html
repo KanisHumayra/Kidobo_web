@@ -33,6 +33,7 @@
                 <button id="profileBtn" class="nav-btn">👤 Profile</button>
             </div>
             <div class="nav-actions">
+                <a href="signup.html" class="btn-secondary" id="signupLink">Sign Up</a>
                 <button id="loginBtn" class="btn-primary">Login</button>
                 <button id="muteBtn" class="btn-icon">🔊</button>
             </div>
@@ -103,6 +104,46 @@
                         <h4>Admin Interface</h4>
                         <p>Content management and analytics dashboard for administrators</p>
                         <button class="btn-secondary" onclick="window.location.href='admin.html'">Try Admin Interface</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <h3>📊 Platform Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1,250+</div>
+                        <div class="stat-label">Happy Children</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">52+</div>
+                        <div class="stat-label">Amazing Stories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8,900+</div>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.8★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-section">
+                <h3>💬 What Parents Say</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"My 7-year-old Emma loves the interactive stories and has improved her reading skills dramatically!"</div>
+                        <div class="testimonial-author">- Sarah Johnson, Parent</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"The games and quizzes make learning fun. Liam can't wait to read his daily story!"</div>
+                        <div class="testimonial-author">- Mike Davis, Parent</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"As a teacher, I recommend KIDOBO to all my students. It's educational and entertaining!"</div>
+                        <div class="testimonial-author">- Mrs. Wilson, Teacher</div>
                     </div>
                 </div>
             </div>
@@ -300,18 +341,19 @@
                             <input type="password" id="parentPassword" required>
                         </div>
                         <button type="submit" class="btn-primary">Login</button>
+                        <div class="helper" style="margin-top:10px">New here? <a href="signup.html">Create parent account</a></div>
                     </form>
                 </div>
 
                 <div id="adminLogin" class="tab-content">
                     <form id="adminLoginForm">
                         <div class="form-group">
-                            <label for="adminUsername">Username:</label>
-                            <input type="text" id="adminUsername" required>
+                            <label for="adminEmail">Email:</label>
+                            <input type="email" id="adminEmail" placeholder="admin@kidobo.com" required>
                         </div>
                         <div class="form-group">
                             <label for="adminPassword">Password:</label>
-                            <input type="password" id="adminPassword" required>
+                            <input type="password" id="adminPassword" placeholder="••••••••" required>
                         </div>
                         <button type="submit" class="btn-primary">Login</button>
                     </form>

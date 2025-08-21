@@ -9,16 +9,6 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-animation">
-                <div class="admin-icon">🔧</div>
-                <div class="loading-text">Loading Admin Dashboard...</div>
-                <div class="loading-subtitle">Initializing system controls...</div>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="admin-navbar">
@@ -86,14 +76,14 @@
                 <div class="dashboard-card">
                     <h3>📈 Platform Activity</h3>
                     <div class="activity-chart">
-                        <p>Activity chart will appear here</p>
+                        <canvas id="platformActivityChart" width="400" height="200"></canvas>
                     </div>
                 </div>
 
                 <div class="dashboard-card">
                     <h3>👶 User Demographics</h3>
                     <div class="demographics-chart">
-                        <p>Demographics chart will appear here</p>
+                        <canvas id="userDemographicsChart" width="400" height="200"></canvas>
                     </div>
                 </div>
 
@@ -313,28 +303,28 @@
                 <div class="analytics-card">
                     <h3>📈 User Growth</h3>
                     <div class="chart-container">
-                        <p>User growth chart will appear here</p>
+                        <canvas id="userGrowthChart"></canvas>
                     </div>
                 </div>
 
                 <div class="analytics-card">
                     <h3>📊 Story Popularity</h3>
                     <div class="chart-container">
-                        <p>Story popularity chart will appear here</p>
+                        <canvas id="storyPopularityChart"></canvas>
                     </div>
                 </div>
 
                 <div class="analytics-card">
                     <h3>⏰ Reading Time Trends</h3>
                     <div class="chart-container">
-                        <p>Reading time trends chart will appear here</p>
+                        <canvas id="readingTimeChart"></canvas>
                     </div>
                 </div>
 
                 <div class="analytics-card">
                     <h3>🎯 Engagement Metrics</h3>
                     <div class="chart-container">
-                        <p>Engagement metrics chart will appear here</p>
+                        <canvas id="engagementChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -389,93 +379,173 @@
                 <p>Manage system configuration and preferences.</p>
             </div>
 
-            <div class="settings-grid">
-                <div class="settings-card">
-                    <h3>🔧 General Settings</h3>
-                    <form id="generalSettingsForm">
-                        <div class="form-group">
-                            <label for="platformName">Platform Name:</label>
-                            <input type="text" id="platformName" value="KIDOBO">
+            <div class="settings-layout">
+                <aside class="settings-sidebar">
+                    <button class="settings-nav-btn active" data-section="generalSettingsSection">General</button>
+                    <button class="settings-nav-btn" data-section="emailSettingsSection">Email</button>
+                    <button class="settings-nav-btn" data-section="backupSettingsSection">Backups</button>
+                    <button class="settings-nav-btn" data-section="securitySettingsSection">Security</button>
+                    <hr>
+                    <button class="settings-nav-btn" data-section="brandingSettingsSection">Branding</button>
+                    <button class="settings-nav-btn" data-section="contentSettingsSection">Content</button>
+                    <button class="settings-nav-btn" data-section="privacySettingsSection">Privacy & Accessibility</button>
+                </aside>
+                <div class="settings-content">
+                    <section id="generalSettingsSection" class="settings-section active">
+                        <h3>🔧 General Settings</h3>
+                        <form id="generalSettingsForm">
+                            <div class="form-group">
+                                <label for="platformName">Platform Name:</label>
+                                <input type="text" id="platformName" value="KIDOBO">
+                            </div>
+                            <div class="form-group">
+                                <label for="maxUsers">Maximum Users:</label>
+                                <input type="number" id="maxUsers" value="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="maintenanceMode">Maintenance Mode:</label>
+                                <select id="maintenanceMode">
+                                    <option value="false">Disabled</option>
+                                    <option value="true">Enabled</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </form>
+                    </section>
+
+                    <section id="emailSettingsSection" class="settings-section">
+                        <h3>📧 Email Settings</h3>
+                        <form id="emailSettingsForm">
+                            <div class="form-group">
+                                <label for="smtpServer">SMTP Server:</label>
+                                <input type="text" id="smtpServer" value="smtp.gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="smtpPort">SMTP Port:</label>
+                                <input type="number" id="smtpPort" value="587">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailFrom">From Email:</label>
+                                <input type="email" id="emailFrom" value="noreply@kidobo.com">
+                            </div>
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </form>
+                    </section>
+
+                    <section id="backupSettingsSection" class="settings-section">
+                        <h3>💾 Backup Settings</h3>
+                        <form id="backupSettingsForm">
+                            <div class="form-group">
+                                <label for="autoBackup">Auto Backup:</label>
+                                <select id="autoBackup">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="never">Never</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="backupRetention">Backup Retention (days):</label>
+                                <input type="number" id="backupRetention" value="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="backupLocation">Backup Location:</label>
+                                <input type="text" id="backupLocation" value="/backups">
+                            </div>
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </form>
+                    </section>
+
+                    <section id="securitySettingsSection" class="settings-section">
+                        <h3>🔒 Security Settings</h3>
+                        <form id="securitySettingsForm">
+                            <div class="form-group">
+                                <label for="sessionTimeout">Session Timeout (minutes):</label>
+                                <input type="number" id="sessionTimeout" value="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="maxLoginAttempts">Max Login Attempts:</label>
+                                <input type="number" id="maxLoginAttempts" value="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordPolicy">Password Policy:</label>
+                                <select id="passwordPolicy">
+                                    <option value="weak">Weak</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="strong">Strong</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </form>
+                    </section>
+
+                    <section id="brandingSettingsSection" class="settings-section">
+                        <h3>🎨 Platform Branding</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Brand Color</label>
+                                <input type="color" id="brandColor" value="#e94560">
+                            </div>
+                            <div class="form-group">
+                                <label>Accent Color</label>
+                                <input type="color" id="accentColor" value="#0f3460">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="maxUsers">Maximum Users:</label>
-                            <input type="number" id="maxUsers" value="1000">
+                            <label>Logo URL</label>
+                            <input type="url" id="logoUrl" placeholder="https://.../logo.png">
                         </div>
                         <div class="form-group">
-                            <label for="maintenanceMode">Maintenance Mode:</label>
-                            <select id="maintenanceMode">
-                                <option value="false">Disabled</option>
-                                <option value="true">Enabled</option>
+                            <label>Homepage Hero Image</label>
+                            <input type="url" id="heroUrl" placeholder="https://.../hero.jpg">
+                        </div>
+                        <button class="btn-primary" id="saveAppearanceBtn">Save Appearance</button>
+                    </section>
+
+                    <section id="contentSettingsSection" class="settings-section">
+                        <h3>📚 Content Settings</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Default Locale</label>
+                                <select id="currency">
+                                    <option value="USD">English (US)</option>
+                                    <option value="EUR">English (EU)</option>
+                                    <option value="GBP">English (UK)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Rating Strictness</label>
+                                <input type="number" id="taxRate" min="0" max="30" value="5">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Featured Category</label>
+                            <select id="paymentProvider">
+                                <option>Adventure</option>
+                                <option>Fantasy</option>
+                                <option>Science</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn-primary">Save Settings</button>
-                    </form>
-                </div>
+                        <button class="btn-primary" id="savePaymentBtn">Save Content</button>
+                    </section>
 
-                <div class="settings-card">
-                    <h3>📧 Email Settings</h3>
-                    <form id="emailSettingsForm">
-                        <div class="form-group">
-                            <label for="smtpServer">SMTP Server:</label>
-                            <input type="text" id="smtpServer" value="smtp.gmail.com">
+                    <section id="privacySettingsSection" class="settings-section">
+                        <h3>🛡️ Privacy & Accessibility</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Data Retention</label>
+                                <select id="shippingSpeed">
+                                    <option>Standard</option>
+                                    <option>Extended</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>High Contrast Threshold</label>
+                                <input type="number" id="freeShip" value="50">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="smtpPort">SMTP Port:</label>
-                            <input type="number" id="smtpPort" value="587">
-                        </div>
-                        <div class="form-group">
-                            <label for="emailFrom">From Email:</label>
-                            <input type="email" id="emailFrom" value="noreply@kidobo.com">
-                        </div>
-                        <button type="submit" class="btn-primary">Save Settings</button>
-                    </form>
-                </div>
-
-                <div class="settings-card">
-                    <h3>💾 Backup Settings</h3>
-                    <form id="backupSettingsForm">
-                        <div class="form-group">
-                            <label for="autoBackup">Auto Backup:</label>
-                            <select id="autoBackup">
-                                <option value="daily">Daily</option>
-                                <option value="weekly" selected>Weekly</option>
-                                <option value="monthly">Monthly</option>
-                                <option value="never">Never</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="backupRetention">Backup Retention (days):</label>
-                            <input type="number" id="backupRetention" value="30">
-                        </div>
-                        <div class="form-group">
-                            <label for="backupLocation">Backup Location:</label>
-                            <input type="text" id="backupLocation" value="/backups">
-                        </div>
-                        <button type="submit" class="btn-primary">Save Settings</button>
-                    </form>
-                </div>
-
-                <div class="settings-card">
-                    <h3>🔒 Security Settings</h3>
-                    <form id="securitySettingsForm">
-                        <div class="form-group">
-                            <label for="sessionTimeout">Session Timeout (minutes):</label>
-                            <input type="number" id="sessionTimeout" value="30">
-                        </div>
-                        <div class="form-group">
-                            <label for="maxLoginAttempts">Max Login Attempts:</label>
-                            <input type="number" id="maxLoginAttempts" value="5">
-                        </div>
-                        <div class="form-group">
-                            <label for="passwordPolicy">Password Policy:</label>
-                            <select id="passwordPolicy">
-                                <option value="weak">Weak</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="strong">Strong</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn-primary">Save Settings</button>
-                    </form>
+                        <button class="btn-primary" id="saveFulfillmentBtn">Save Privacy</button>
+                    </section>
                 </div>
             </div>
         </section>
@@ -575,6 +645,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
     <script src="admin.js"></script>
 </body>
 </html> 

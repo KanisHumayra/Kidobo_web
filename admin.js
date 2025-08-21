@@ -20,7 +20,249 @@ class AdminDashboard {
         this.setupEventListeners();
         this.loadSampleData();
         this.updateUI();
+        this.initDatabaseAndCharts();
         this.hideLoadingScreen();
+    }
+
+    async initDatabaseAndCharts() {
+        try {
+            if (!window.initSqlJs) {
+                this.renderChartsFromState();
+                return;
+            }
+            const SQL = await initSqlJs({ locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}` });
+            const existing = localStorage.getItem('kidoboAnalyticsDb');
+            this.db = new SQL.Database(existing ? Uint8Array.from(atob(existing), c => c.charCodeAt(0)) : undefined);
+            this.createTablesIfNeeded();
+            this.seedAnalyticsIfNeeded();
+            this.renderCharts();
+            this.saveDb();
+        } catch (e) {
+            console.warn('SQL.js unavailable, falling back to in-memory charts', e);
+            this.renderChartsFromState();
+        }
+    }
+
+    saveDb() {
+        if (!this.db) return;
+        const data = this.db.export();
+        const b64 = btoa(Array.from(data).map(c => String.fromCharCode(c)).join(''));
+        localStorage.setItem('kidoboAnalyticsDb', b64);
+    }
+
+    createTablesIfNeeded() {
+        this.db.run(`
+            CREATE TABLE IF NOT EXISTS user_growth (label TEXT, value INTEGER);
+            CREATE TABLE IF NOT EXISTS story_popularity (title TEXT, reads INTEGER);
+            CREATE TABLE IF NOT EXISTS reading_time (label TEXT, minutes INTEGER);
+            CREATE TABLE IF NOT EXISTS engagement (label TEXT, value INTEGER);
+        `);
+    }
+
+    seedAnalyticsIfNeeded() {
+        const check = this.db.exec('SELECT COUNT(*) as c FROM user_growth');
+        const count = check.length ? check[0].values[0][0] : 0;
+        if (count > 0) return;
+        const growth = [['Week 1', 120], ['Week 2', 135], ['Week 3', 142], ['Week 4', 156]];
+        const story = [['The Brave Little Mouse', 156], ['The Magic Garden', 89], ['The Space Adventure', 67]];
+        const rtime = [['Mon', 220], ['Tue', 240], ['Wed', 210], ['Thu', 260], ['Fri', 280], ['Sat', 320], ['Sun', 300]];
+        const engage = [['Likes', 820], ['Shares', 120], ['Comments', 240], ['Completions', 430]];
+        const stmt1 = this.db.prepare('INSERT INTO user_growth VALUES (?, ?)');
+        growth.forEach(([l,v]) => stmt1.run([l,v])); stmt1.free();
+        const stmt2 = this.db.prepare('INSERT INTO story_popularity VALUES (?, ?)');
+        story.forEach(([t,r]) => stmt2.run([t,r])); stmt2.free();
+        const stmt3 = this.db.prepare('INSERT INTO reading_time VALUES (?, ?)');
+        rtime.forEach(([l,m]) => stmt3.run([l,m])); stmt3.free();
+        const stmt4 = this.db.prepare('INSERT INTO engagement VALUES (?, ?)');
+        engage.forEach(([l,v]) => stmt4.run([l,v])); stmt4.free();
+    }
+
+    queryAll(sql) {
+        const res = this.db.exec(sql);
+        if (!res.length) return { columns: [], values: [] };
+        return res[0];
+    }
+
+    renderCharts() {
+        const ug = this.queryAll('SELECT label, value FROM user_growth');
+        const sp = this.queryAll('SELECT title, reads FROM story_popularity');
+        const rt = this.queryAll('SELECT label, minutes FROM reading_time');
+        const en = this.queryAll('SELECT label, value FROM engagement');
+        
+        // Render existing charts
+        this.drawChart('userGrowthChart', ug.values.map(v=>v[0]), ug.values.map(v=>v[1]), 'line', '#4e79a7');
+        this.drawChart('storyPopularityChart', sp.values.map(v=>v[0]), sp.values.map(v=>v[1]), 'bar', '#f28e2c');
+        this.drawChart('readingTimeChart', rt.values.map(v=>v[0]), rt.values.map(v=>v[1]), 'line', '#59a14f');
+        this.drawChart('engagementChart', en.values.map(v=>v[0]), en.values.map(v=>v[1]), 'bar', '#e15759');
+        
+        // Render new dashboard charts
+        this.renderPlatformActivityChart();
+        this.renderUserDemographicsChart();
+    }
+
+    renderChartsFromState() {
+        const ug = { labels: ['W1','W2','W3','W4'], data: this.analytics.userGrowth };
+        const sp = { labels: this.analytics.storyPerformance.map(s => s.title), data: this.analytics.storyPerformance.map(s => s.reads) };
+        const rt = { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], data: [220,240,210,260,280,320,300] };
+        const en = { labels: ['Likes','Shares','Comments','Completions'], data: [820,120,240,430] };
+        
+        // Render existing charts
+        this.drawChart('userGrowthChart', ug.labels, ug.data, 'line', '#4e79a7');
+        this.drawChart('storyPopularityChart', sp.labels, sp.data, 'bar', '#f28e2c');
+        this.drawChart('readingTimeChart', rt.labels, rt.data, 'line', '#59a14f');
+        this.drawChart('engagementChart', en.labels, en.data, 'bar', '#e15759');
+        
+        // Render new dashboard charts
+        this.renderPlatformActivityChart();
+        this.renderUserDemographicsChart();
+    }
+
+    drawChart(canvasId, labels, data, type, color) {
+        const el = document.getElementById(canvasId);
+        if (!el || !window.Chart) return;
+        new Chart(el, {
+            type,
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Value',
+                    data,
+                    borderColor: color,
+                    backgroundColor: type === 'line' ? color : color + '80',
+                    fill: type === 'line',
+                    tension: 0.35
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+
+    renderPlatformActivityChart() {
+        const canvas = document.getElementById('platformActivityChart');
+        if (!canvas || !window.Chart) return;
+        
+        // Use real analytics data for platform activity
+        const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+                {
+                    label: 'Active Users',
+                    data: this.analytics.platformActivity.dailyActiveUsers,
+                    borderColor: '#4e79a7',
+                    backgroundColor: '#4e79a780',
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: 'Stories Read',
+                    data: this.analytics.platformActivity.dailyStoriesRead,
+                    borderColor: '#f28e2c',
+                    backgroundColor: '#f28e2c80',
+                    fill: true,
+                    tension: 0.4
+                }
+            ]
+        };
+        
+        new Chart(canvas, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 4,
+                        hoverRadius: 6
+                    }
+                }
+            }
+        });
+    }
+
+    renderUserDemographicsChart() {
+        const canvas = document.getElementById('userDemographicsChart');
+        if (!canvas || !window.Chart) return;
+        
+        // Use real analytics data for user demographics
+        const data = {
+            labels: this.analytics.userDemographics.categories,
+            datasets: [{
+                data: this.analytics.userDemographics.ageGroups,
+                backgroundColor: [
+                    '#FF6B6B',  // Red for young children
+                    '#4ECDC4',  // Teal for middle children
+                    '#45B7D1',  // Blue for older children
+                    '#96CEB4',  // Green for mixed ages
+                    '#FFEAA7'   // Yellow for older mixed ages
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+        
+        new Chart(canvas, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                return `${context.label}: ${context.parsed} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 2
+                    }
+                }
+            }
+        });
     }
 
     loadUserData() {
@@ -68,13 +310,16 @@ class AdminDashboard {
                 {
                     id: 1,
                     title: 'The Brave Little Mouse',
-                    category: 'adventure',
+                    category: 'animals',
                     ageGroup: '4-6',
                     description: 'A tiny mouse learns that courage comes in all sizes!',
                     image: '🐭',
                     reads: 156,
                     rating: 4.8,
-                    status: 'published'
+                    status: 'published',
+                    publishDate: '2024-01-10',
+                    author: 'Story Team',
+                    wordCount: 120
                 },
                 {
                     id: 2,
@@ -85,7 +330,10 @@ class AdminDashboard {
                     image: '🌸',
                     reads: 89,
                     rating: 4.6,
-                    status: 'published'
+                    status: 'published',
+                    publishDate: '2024-01-15',
+                    author: 'Story Team',
+                    wordCount: 95
                 },
                 {
                     id: 3,
@@ -96,7 +344,136 @@ class AdminDashboard {
                     image: '🚀',
                     reads: 67,
                     rating: 4.9,
-                    status: 'published'
+                    status: 'published',
+                    publishDate: '2024-01-20',
+                    author: 'Story Team',
+                    wordCount: 150
+                },
+                {
+                    id: 4,
+                    title: 'The Rainbow Fish',
+                    category: 'ocean',
+                    ageGroup: '5-7',
+                    description: 'A beautiful fish learns the joy of sharing with friends!',
+                    image: '🐠',
+                    reads: 134,
+                    rating: 4.9,
+                    status: 'published',
+                    publishDate: '2024-01-25',
+                    author: 'Story Team',
+                    wordCount: 110
+                },
+                {
+                    id: 5,
+                    title: 'The Little Red Hen',
+                    category: 'farm',
+                    ageGroup: '6-8',
+                    description: 'A hardworking hen teaches her friends about helping and responsibility!',
+                    image: '🐔',
+                    reads: 98,
+                    rating: 4.5,
+                    status: 'published',
+                    publishDate: '2024-01-30',
+                    author: 'Story Team',
+                    wordCount: 130
+                },
+                {
+                    id: 6,
+                    title: 'The Lost Puppy',
+                    category: 'animals',
+                    ageGroup: '4-6',
+                    description: 'A lost puppy finds its way home with the help of forest friends.',
+                    image: '🐕',
+                    reads: 45,
+                    rating: 4.3,
+                    status: 'draft',
+                    publishDate: null,
+                    author: 'Story Team',
+                    wordCount: 85
+                },
+                {
+                    id: 7,
+                    title: 'The Enchanted Castle',
+                    category: 'fantasy',
+                    ageGroup: '8-10',
+                    description: 'A magical castle holds secrets waiting to be discovered.',
+                    image: '🏰',
+                    reads: 0,
+                    rating: 0,
+                    status: 'draft',
+                    publishDate: null,
+                    author: 'Story Team',
+                    wordCount: 180
+                },
+                {
+                    id: 8,
+                    title: 'Jungle Adventure',
+                    category: 'adventure',
+                    ageGroup: '4-6',
+                    description: 'A group of friends explores a friendly jungle full of surprises!',
+                    image: '🌿',
+                    reads: 78,
+                    rating: 4.7,
+                    status: 'published',
+                    publishDate: '2024-02-05',
+                    author: 'Story Team',
+                    wordCount: 95
+                },
+                {
+                    id: 9,
+                    title: 'Princess and the Dragon',
+                    category: 'fantasy',
+                    ageGroup: '7-8',
+                    description: 'A brave princess makes friends with a gentle dragon.',
+                    image: '👸',
+                    reads: 92,
+                    rating: 4.8,
+                    status: 'published',
+                    publishDate: '2024-02-10',
+                    author: 'Story Team',
+                    wordCount: 110
+                },
+                {
+                    id: 10,
+                    title: 'Pirate Treasure Hunt',
+                    category: 'adventure',
+                    ageGroup: '7-8',
+                    description: 'Two pirates follow a map to find a friendly surprise.',
+                    image: '🏴‍☠️',
+                    reads: 65,
+                    rating: 4.6,
+                    status: 'published',
+                    publishDate: '2024-02-12',
+                    author: 'Story Team',
+                    wordCount: 105
+                },
+                {
+                    id: 11,
+                    title: 'Robot\'s First Day',
+                    category: 'science',
+                    ageGroup: '6-8',
+                    description: 'A shy robot learns to make friends at school.',
+                    image: '🤖',
+                    reads: 58,
+                    rating: 4.5,
+                    status: 'published',
+                    publishDate: '2024-02-15',
+                    author: 'Story Team',
+                    wordCount: 100
+                },
+                {
+                    id: 12,
+                    title: 'Winter Wonderland',
+                    category: 'adventure',
+                    ageGroup: '4-6',
+                    description: 'A snowy day of building, sledding, and warm surprises.',
+                    image: '❄️',
+                    reads: 72,
+                    rating: 4.7,
+                    status: 'published',
+                    publishDate: '2024-02-18',
+                    author: 'Story Team',
+                    wordCount: 90
                 }
             ];
         }
@@ -112,7 +489,9 @@ class AdminDashboard {
                     booksRead: 12,
                     stars: 180,
                     status: 'active',
-                    createdAt: '2024-01-15'
+                    createdAt: '2024-01-15',
+                    lastActive: '2024-02-10',
+                    email: 'emma@example.com'
                 },
                 {
                     id: 2,
@@ -122,7 +501,9 @@ class AdminDashboard {
                     booksRead: 8,
                     stars: 120,
                     status: 'active',
-                    createdAt: '2024-02-01'
+                    createdAt: '2024-02-01',
+                    lastActive: '2024-02-09',
+                    email: 'liam@example.com'
                 },
                 {
                     id: 3,
@@ -132,27 +513,101 @@ class AdminDashboard {
                     booksRead: null,
                     stars: null,
                     status: 'active',
-                    createdAt: '2024-01-10'
+                    createdAt: '2024-01-10',
+                    lastActive: '2024-02-10',
+                    email: 'sarah@example.com',
+                    childrenCount: 2
+                },
+                {
+                    id: 4,
+                    name: 'Mike Davis',
+                    type: 'child',
+                    age: 9,
+                    booksRead: 15,
+                    stars: 220,
+                    status: 'active',
+                    createdAt: '2024-01-20',
+                    lastActive: '2024-02-08',
+                    email: 'mike@example.com'
+                },
+                {
+                    id: 5,
+                    name: 'Sophie Wilson',
+                    type: 'child',
+                    age: 6,
+                    booksRead: 6,
+                    stars: 90,
+                    status: 'active',
+                    createdAt: '2024-02-05',
+                    lastActive: '2024-02-10',
+                    email: 'sophie@example.com'
+                },
+                {
+                    id: 6,
+                    name: 'David Brown',
+                    type: 'parent',
+                    age: null,
+                    booksRead: null,
+                    stars: null,
+                    status: 'active',
+                    createdAt: '2024-01-25',
+                    lastActive: '2024-02-09',
+                    email: 'david@example.com',
+                    childrenCount: 1
                 }
             ];
         }
 
         // Sample analytics data
         this.analytics = {
-            totalUsers: 156,
-            totalStories: 24,
-            totalReads: 1247,
-            totalStars: 8934,
-            userGrowth: [120, 135, 142, 156],
+            totalUsers: 1250,
+            totalStories: 52,
+            totalReads: 9200,
+            totalStars: 46800,
+            monthlyGrowth: 12.5,
+            userRetention: 87.3,
+            userGrowth: [120, 135, 142, 156, 168, 175, 182, 190],
             storyPerformance: [
-                { title: 'The Brave Little Mouse', reads: 156, rating: 4.8 },
-                { title: 'The Magic Garden', reads: 89, rating: 4.6 },
-                { title: 'The Space Adventure', reads: 67, rating: 4.9 }
+                { title: 'The Brave Little Mouse', reads: 156, rating: 4.8, category: 'animals' },
+                { title: 'The Magic Garden', reads: 89, rating: 4.6, category: 'fantasy' },
+                { title: 'The Space Adventure', reads: 67, rating: 4.9, category: 'science' },
+                { title: 'The Rainbow Fish', reads: 134, rating: 4.9, category: 'ocean' },
+                { title: 'The Little Red Hen', reads: 98, rating: 4.5, category: 'farm' },
+                { title: 'Jungle Adventure', reads: 78, rating: 4.7, category: 'adventure' },
+                { title: 'Princess and the Dragon', reads: 92, rating: 4.8, category: 'fantasy' }
             ],
             demographics: {
-                '4-6': 45,
-                '7-8': 38,
-                '9-10': 17
+                '4-6': 450,
+                '7-8': 380,
+                '9-10': 320,
+                '5-7': 100,
+                '6-8': 150
+            },
+            categoryStats: [
+                { category: 'animals', count: 16, reads: 2385, avgRating: 4.7 },
+                { category: 'fantasy', count: 13, reads: 1982, avgRating: 4.7 },
+                { category: 'science', count: 9, reads: 1288, avgRating: 4.6 },
+                { category: 'ocean', count: 6, reads: 980, avgRating: 4.8 },
+                { category: 'farm', count: 4, reads: 460, avgRating: 4.4 },
+                { category: 'adventure', count: 4, reads: 215, avgRating: 4.7 }
+            ],
+            ageGroupStats: [
+                { ageGroup: '4-6', users: 450, reads: 3350, avgRating: 4.8 },
+                { ageGroup: '7-8', users: 380, reads: 2892, avgRating: 4.7 },
+                { ageGroup: '9-10', users: 320, reads: 2400, avgRating: 4.5 },
+                { ageGroup: '5-7', users: 100, reads: 500, avgRating: 4.9 },
+                { ageGroup: '6-8', users: 150, reads: 158, avgRating: 4.5 }
+            ],
+            // New data for dashboard charts
+            platformActivity: {
+                dailyActiveUsers: [45, 52, 48, 61, 58, 73, 68],
+                dailyStoriesRead: [120, 145, 132, 168, 156, 189, 175],
+                dailyNewUsers: [8, 12, 6, 15, 11, 18, 14]
+            },
+            userDemographics: {
+                ageGroups: [450, 380, 320, 100, 150],
+                userTypes: [1050, 80, 20], // Children, Parents, Admins
+                categories: ['Ages 4-6', 'Ages 7-8', 'Ages 9-10', 'Ages 5-7', 'Ages 6-8']
             }
         };
 
@@ -169,7 +624,16 @@ class AdminDashboard {
             backupLocation: '/backups',
             sessionTimeout: 30,
             maxLoginAttempts: 5,
-            passwordPolicy: 'medium'
+            passwordPolicy: 'medium',
+            brandColor: '#4CAF50', // Added for new settings
+            accentColor: '#2196F3', // Added for new settings
+            logoUrl: 'https://via.placeholder.com/150', // Added for new settings
+            heroUrl: 'https://via.placeholder.com/1200x400', // Added for new settings
+            currency: 'USD', // Added for new settings
+            taxRate: 0.05, // Added for new settings
+            paymentProvider: 'Stripe', // Added for new settings
+            shippingSpeed: 'Standard', // Added for new settings
+            freeShip: 100 // Added for new settings
         };
     }
 
@@ -228,10 +692,53 @@ class AdminDashboard {
         if (addUserForm) addUserForm.addEventListener('submit', (e) => this.addUser(e));
 
         // Settings forms
-        document.getElementById('generalSettingsForm').addEventListener('submit', (e) => this.saveGeneralSettings(e));
-        document.getElementById('emailSettingsForm').addEventListener('submit', (e) => this.saveEmailSettings(e));
-        document.getElementById('backupSettingsForm').addEventListener('submit', (e) => this.saveBackupSettings(e));
-        document.getElementById('securitySettingsForm').addEventListener('submit', (e) => this.saveSecuritySettings(e));
+        const generalSettingsForm = document.getElementById('generalSettingsForm');
+        const emailSettingsForm = document.getElementById('emailSettingsForm');
+        const backupSettingsForm = document.getElementById('backupSettingsForm');
+        const securitySettingsForm = document.getElementById('securitySettingsForm');
+        
+        if (generalSettingsForm) generalSettingsForm.addEventListener('submit', (e) => this.saveGeneralSettings(e));
+        if (emailSettingsForm) emailSettingsForm.addEventListener('submit', (e) => this.saveEmailSettings(e));
+        if (backupSettingsForm) backupSettingsForm.addEventListener('submit', (e) => this.saveBackupSettings(e));
+        if (securitySettingsForm) securitySettingsForm.addEventListener('submit', (e) => this.saveSecuritySettings(e));
+
+        // E-commerce style settings
+        const saveAppearanceBtn = document.getElementById('saveAppearanceBtn');
+        const savePaymentBtn = document.getElementById('savePaymentBtn');
+        const saveFulfillmentBtn = document.getElementById('saveFulfillmentBtn');
+        if (saveAppearanceBtn) saveAppearanceBtn.addEventListener('click', () => {
+            this.settings.brandColor = document.getElementById('brandColor').value;
+            this.settings.accentColor = document.getElementById('accentColor').value;
+            this.settings.logoUrl = document.getElementById('logoUrl').value;
+            this.settings.heroUrl = document.getElementById('heroUrl').value;
+            this.saveUserData();
+            this.showNotification('Appearance settings saved', 'success');
+        });
+        if (savePaymentBtn) savePaymentBtn.addEventListener('click', () => {
+            this.settings.currency = document.getElementById('currency').value;
+            this.settings.taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            this.settings.paymentProvider = document.getElementById('paymentProvider').value;
+            this.saveUserData();
+            this.showNotification('Content settings saved', 'success');
+        });
+        if (saveFulfillmentBtn) saveFulfillmentBtn.addEventListener('click', () => {
+            this.settings.shippingSpeed = document.getElementById('shippingSpeed').value;
+            this.settings.freeShip = parseFloat(document.getElementById('freeShip').value) || 0;
+            this.saveUserData();
+            this.showNotification('Privacy settings saved', 'success');
+        });
+
+        // Settings sidebar nav
+        document.querySelectorAll('.settings-nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.settings-nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const sectionId = btn.getAttribute('data-section');
+                document.querySelectorAll('.settings-section').forEach(sec => sec.classList.remove('active'));
+                const target = document.getElementById(sectionId);
+                if (target) target.classList.add('active');
+            });
+        });
 
         // Analytics actions
         document.getElementById('exportAnalyticsBtn').addEventListener('click', () => this.exportAnalytics());
@@ -342,6 +849,17 @@ class AdminDashboard {
         document.getElementById('sessionTimeout').value = this.settings.sessionTimeout;
         document.getElementById('maxLoginAttempts').value = this.settings.maxLoginAttempts;
         document.getElementById('passwordPolicy').value = this.settings.passwordPolicy;
+
+        // E-commerce style settings
+        document.getElementById('brandColor').value = this.settings.brandColor;
+        document.getElementById('accentColor').value = this.settings.accentColor;
+        document.getElementById('logoUrl').value = this.settings.logoUrl;
+        document.getElementById('heroUrl').value = this.settings.heroUrl;
+        document.getElementById('currency').value = this.settings.currency;
+        document.getElementById('taxRate').value = this.settings.taxRate;
+        document.getElementById('paymentProvider').value = this.settings.paymentProvider;
+        document.getElementById('shippingSpeed').value = this.settings.shippingSpeed;
+        document.getElementById('freeShip').value = this.settings.freeShip;
     }
 
     filterStories() {

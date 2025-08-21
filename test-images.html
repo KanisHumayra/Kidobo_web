@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .image-test { margin: 20px 0; }
+        img { max-width: 300px; max-height: 200px; border: 1px solid #ccc; margin: 10px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <div class="image-test">
+        <h3>Test 1: Cat Image</h3>
+        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=300&fit=crop" 
+             alt="Cat" 
+             onload="this.nextElementSibling.textContent='✅ Loaded successfully'"
+             onerror="this.nextElementSibling.textContent='❌ Failed to load'">
+        <div class="status"></div>
+    </div>
+    
+    <div class="image-test">
+        <h3>Test 2: Forest Image</h3>
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" 
+             alt="Forest" 
+             onload="this.nextElementSibling.textContent='✅ Loaded successfully'"
+             onerror="this.nextElementSibling.textContent='❌ Failed to load'">
+        <div class="status"></div>
+    </div>
+    
+    <div class="image-test">
+        <h3>Test 3: Bird Image</h3>
+        <img src="https://images.unsplash.com/photo-1444464666168-49d633b62aa9?w=400&h=300&fit=crop" 
+             alt="Bird" 
+             onload="this.nextElementSibling.textContent='✅ Loaded successfully'"
+             onerror="this.nextElementSibling.textContent='❌ Failed to load'">
+        <div class="status"></div>
+    </div>
+    
+    <div class="image-test">
+        <h3>Test 4: Garden Image</h3>
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" 
+             alt="Garden" 
+             onload="this.nextElementSibling.textContent='✅ Loaded successfully'"
+             onerror="this.nextElementSibling.textContent='❌ Failed to load'">
+        <div class="status"></div>
+    </div>
+    
+    <script>
+        console.log('Testing image loading...');
+        
+        // Test if images are accessible
+        const testUrls = [
+            'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1444464666168-49d633b62aa9?w=400&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop'
+        ];
+        
+        testUrls.forEach(url => {
+            fetch(url, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✅', url, 'is accessible');
+                    } else {
+                        console.log('❌', url, 'returned status:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.log('❌', url, 'error:', error.message);
+                });
+        });
+    </script>
+</body>
+</html> 

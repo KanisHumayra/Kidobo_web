@@ -25,6 +25,7 @@ class ParentDashboard {
         this.setupEventListeners();
         this.loadSampleData();
         this.updateUI();
+        this.renderCharts();
         this.hideLoadingScreen();
     }
 
@@ -72,9 +73,13 @@ class ParentDashboard {
                     booksRead: 12,
                     totalStars: 180,
                     readingTime: 120,
-                    achievements: ['First Reader', 'Bookworm'],
-                    favoriteStories: ['The Brave Little Mouse', 'The Magic Garden'],
-                    createdAt: '2024-01-15'
+                    achievements: ['First Reader', 'Bookworm', 'Speed Reader', 'Word Master'],
+                    favoriteStories: ['The Brave Little Mouse', 'The Magic Garden', 'The Rainbow Fish', 'Jungle Adventure', 'Princess and the Dragon'],
+                    createdAt: '2024-01-15',
+                    lastActive: '2024-02-10',
+                    readingLevel: 'Advanced',
+                    weeklyGoal: 5,
+                    weeklyProgress: 3
                 },
                 {
                     id: 2,
@@ -84,9 +89,29 @@ class ParentDashboard {
                     booksRead: 8,
                     totalStars: 120,
                     readingTime: 80,
-                    achievements: ['First Reader'],
-                    favoriteStories: ['The Brave Little Mouse'],
-                    createdAt: '2024-02-01'
+                    achievements: ['First Reader', 'Story Lover'],
+                    favoriteStories: ['The Brave Little Mouse', 'The Little Red Hen', 'Pirate Treasure Hunt', 'Winter Wonderland'],
+                    createdAt: '2024-02-01',
+                    lastActive: '2024-02-09',
+                    readingLevel: 'Beginner',
+                    weeklyGoal: 3,
+                    weeklyProgress: 2
+                },
+                {
+                    id: 3,
+                    name: 'Sophie',
+                    age: 6,
+                    avatar: '🦋',
+                    booksRead: 15,
+                    totalStars: 220,
+                    readingTime: 150,
+                    achievements: ['First Reader', 'Bookworm', 'Story Explorer'],
+                    favoriteStories: ['The Magic Garden', 'The Space Adventure', 'The Rainbow Fish', 'Robot\'s First Day', 'Princess and the Dragon'],
+                    createdAt: '2024-01-20',
+                    lastActive: '2024-02-10',
+                    readingLevel: 'Intermediate',
+                    weeklyGoal: 4,
+                    weeklyProgress: 4
                 }
             ];
         }
@@ -144,19 +169,60 @@ class ParentDashboard {
             {
                 action: 'Emma completed "The Brave Little Mouse"',
                 time: '2 hours ago',
-                childId: 1
+                childId: 1,
+                type: 'story_completed',
+                stars: 5
             },
             {
                 action: 'Liam earned 20 stars in Word Match',
                 time: '4 hours ago',
-                childId: 2
+                childId: 2,
+                type: 'game_completed',
+                score: '8/10'
             },
             {
                 action: 'Emma started reading "The Magic Garden"',
                 time: '1 day ago',
-                childId: 1
+                childId: 1,
+                type: 'story_started'
+            },
+            {
+                action: 'Sophie earned "Story Explorer" achievement',
+                time: '1 day ago',
+                childId: 3,
+                type: 'achievement_earned',
+                achievement: 'Story Explorer'
+            },
+            {
+                action: 'Liam completed "The Little Red Hen"',
+                time: '2 days ago',
+                childId: 2,
+                type: 'story_completed',
+                stars: 4
+            },
+            {
+                action: 'Emma played Vocabulary Quiz',
+                time: '3 days ago',
+                childId: 1,
+                type: 'game_completed',
+                score: '9/10'
+            },
+            {
+                action: 'Sophie read "The Space Adventure"',
+                time: '4 days ago',
+                childId: 3,
+                type: 'story_completed',
+                stars: 5
             }
         ];
+
+        // Sample reading time and books completed data for charts
+        this.readingData = {
+            weeklyReadingTime: [25, 30, 20, 35, 28, 40, 32], // Mon-Sun in minutes
+            weeklyBooksCompleted: [2, 3, 1, 4, 2, 5, 3], // Mon-Sun count
+            monthlyReadingTime: [120, 135, 98, 156, 142, 189, 167, 145, 178, 156, 134, 167], // Jan-Dec in minutes
+            monthlyBooksCompleted: [8, 12, 6, 15, 11, 18, 14, 16, 19, 13, 10, 17] // Jan-Dec count
+        };
 
         this.calculateFamilyStats();
     }
@@ -647,6 +713,153 @@ class ParentDashboard {
                 document.getElementById('loadingScreen').style.display = 'none';
             }, 500);
         }, 1000);
+    }
+
+    renderCharts() {
+        // Wait for DOM to be ready and Chart.js to load
+        setTimeout(() => {
+            this.renderReadingTimeChart();
+            this.renderBooksCompletedChart();
+        }, 100);
+    }
+
+    renderReadingTimeChart() {
+        const canvas = document.getElementById('readingTimeChart');
+        if (!canvas || !window.Chart) return;
+        
+        // Use real reading time data for the week
+        const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Reading Time (minutes)',
+                data: this.readingData.weeklyReadingTime,
+                borderColor: '#4e79a7',
+                backgroundColor: '#4e79a780',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#4e79a7',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2
+            }]
+        };
+        
+        new Chart(canvas, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f0f0f0'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' min';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 4,
+                        hoverRadius: 6
+                    }
+                }
+            }
+        });
+    }
+
+    renderBooksCompletedChart() {
+        const canvas = document.getElementById('booksCompletedChart');
+        if (!canvas || !window.Chart) return;
+        
+        // Use real books completed data for the week
+        const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Books Completed',
+                data: this.readingData.weeklyBooksCompleted,
+                backgroundColor: [
+                    '#FF6B6B',  // Red
+                    '#4ECDC4',  // Teal
+                    '#45B7D1',  // Blue
+                    '#96CEB4',  // Green
+                    '#FFEAA7',  // Yellow
+                    '#DDA0DD',  // Plum
+                    '#98D8C8'   // Mint
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2,
+                borderRadius: 8
+            }]
+        };
+        
+        new Chart(canvas, {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f0f0f0'
+                        },
+                        ticks: {
+                            stepSize: 1,
+                            callback: function(value) {
+                                return value + ' book' + (value !== 1 ? 's' : '');
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                },
+                elements: {
+                    bar: {
+                        borderRadius: 8
+                    }
+                }
+            }
+        });
     }
 }
 

@@ -301,6 +301,14 @@ body {
     color: var(--admin-text-light);
     font-weight: 500;
     border: 2px dashed var(--admin-border);
+    position: relative;
+}
+
+.activity-chart canvas,
+.demographics-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 200px;
 }
 
 /* Activity List - Admin Specific */
@@ -928,3 +936,23 @@ body {
         font-size: 0.8rem;
     }
 } 
+
+/* E-commerce style settings cards */
+.settings-grid .settings-card.ecommerce { border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); backdrop-filter: blur(6px); }
+.settings-card.ecommerce h3 { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.settings-card.ecommerce .form-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.settings-card.ecommerce .form-group input[type=color] { height: 44px; padding: 0; border-radius: 8px; border: 1px solid #2c3356; background: #111827; }
+.settings-card.ecommerce .form-group input[type=url] { width: 100%; border: 1px solid #2c3356; background: #0b1324; color: #e5e7eb; border-radius: 8px; padding: 10px 12px; }
+.settings-card.ecommerce select { width: 100%; border: 1px solid #2c3356; background: #0b1324; color: #e5e7eb; border-radius: 8px; padding: 10px 12px; }
+@media (max-width: 768px) { .settings-card.ecommerce .form-row { grid-template-columns: 1fr; } } 
+
+/* Settings layout with sidebar */
+.settings-layout { display: grid; grid-template-columns: 240px 1fr; gap: 20px; }
+.settings-sidebar { background: #0f3460; border: 1px solid #0c2a4c; border-radius: 12px; padding: 12px; height: fit-content; position: sticky; top: 80px; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+.settings-nav-btn { width: 100%; text-align: left; padding: 10px 12px; border: none; border-radius: 8px; margin: 4px 0; cursor: pointer; background: rgba(255,255,255,0.06); color: #f1f5f9; font-weight: 700; opacity: 1; text-shadow: 0 1px 1px rgba(0,0,0,0.6); transition: background .2s ease, color .2s ease; }
+.settings-nav-btn:hover { background: rgba(255,255,255,0.06); }
+.settings-nav-btn.active { background: #1f2937; }
+.settings-content { background: transparent; }
+.settings-section { display: none; }
+.settings-section.active { display: block; }
+@media (max-width: 900px) { .settings-layout { grid-template-columns: 1fr; } .settings-sidebar { position: static; display: flex; overflow-x: auto; } .settings-nav-btn { flex: 1; white-space: nowrap; } } 
